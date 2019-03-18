@@ -1,0 +1,33 @@
+{
+    "id": "8d6db135-0023-4fb1-af14-0cdd5c99d57f",
+    "modelName": "GMFolder",
+    "mvc": "1.1",
+    "name": "8d6db135-0023-4fb1-af14-0cdd5c99d57f",
+    "children": [
+        "aa65ee02-899b-4d87-9c6a-d9c8621174d2",
+        "e4a451cf-8312-4f33-a4df-a90f7b113fce",
+        "73fa74bf-e22c-4198-bf82-7d1e108faf68",
+        "a95d3e9d-1466-4a93-bd26-8fbb38d4abd8",
+        "8ad94049-a8cc-4454-88f0-ddd670232f69",
+        "7908a9b1-8327-4fc5-81cb-cfa015e31bb3",
+        "89bca0a7-f3c0-4efd-9159-afc79d7104a5",
+        "bfee989c-d510-4e9c-b29f-c7d0603715d5",
+        "effb239e-4335-49bd-a333-4c8eb7a4167d",
+        "c7488db8-740c-4026-b763-9d836bd911d7",
+        "f600bc6d-0404-4ffe-9a57-41ebeb8de369",
+        "067488d8-cf45-447b-b6ea-9747fa3180d4",
+        "da4fba61-86fc-4cdd-a7b8-6484d2d81114",
+        "1029997c-7749-42c5-9d18-fd3af89bf70f",
+        "98772370-8ba6-4b06-ac9d-e5ed89b28888",
+        "3704493f-84c7-419b-b6a2-224b4ba3ba59",
+        "c88fdd58-8fdf-4932-9801-bac0df6537cc",
+        "e085e448-0c77-4d05-8a55-d631c58c46eb",
+        "0c5ca7b0-280e-41dd-9526-ad92f7709687",
+        "0adaa9aa-8121-4048-9fb7-39cd551088ed",
+        "da2470d7-0977-4e58-8336-a5c61a1b8cd6"
+    ],
+    "filterType": "GMSound",
+    "folderName": "Game",
+    "isDefaultView": false,
+    "localisedFolderName": ""
+}

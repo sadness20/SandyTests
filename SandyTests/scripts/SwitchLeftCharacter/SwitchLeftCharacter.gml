@@ -1,0 +1,1 @@
+global.step[global.write, 21] = argument[0];
