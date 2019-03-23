@@ -36,7 +36,8 @@
         "9cf706ac-2df5-48e9-bdee-6a69967c4079",
         "3d1f44b4-6c8a-43b9-b2b9-12dee5f8e118",
         "02ab6e83-6e98-42d1-8a6e-ab7097b6d493",
-        "271fbd28-7c12-4cbd-a735-c4e80a7c8da0"
+        "271fbd28-7c12-4cbd-a735-c4e80a7c8da0",
+        "337e647f-67b3-44ef-a56c-00b749145192"
     ],
     "filterType": "GMSprite",
     "folderName": "Scenary",

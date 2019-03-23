@@ -143,7 +143,7 @@ global.MAP[val, 8] = true; //unlocked
 global.MAP[val, 9] = 7; //stageID/shopkeeper
 global.MAP[val, 10] = 1; //type
 global.MAP[val, 11] = 0; //terraintype
-global.MAP[val, 12] = 0; //music pack
+global.MAP[val, 12] = 5; //music pack
 global.MAP[val, 13] = 0; //flag value
 global.MAP[val, 14] = 0; //flag type, 0 = stage
 global.MAP[val, 15] = 20; //map width

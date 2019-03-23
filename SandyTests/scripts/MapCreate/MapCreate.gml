@@ -14,6 +14,9 @@ with (obj_node)
 				passable = true;
 				cost = 2;
 				break;
+			case 6: //houses
+				objectLink = tempObject.id;
+				break;
 		}
 		//sprite_index = tempObject.sprite_index;
 		type = tempObject.type;

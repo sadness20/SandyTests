@@ -402,6 +402,13 @@ global.MUSICPACK[val, 2] = mus_duskfalls_fire;
 global.MUSICPACK[val, 3] = mus_adarkfall;
 global.MUSICPACK[val, 4] = mus_adarkfall_fire;
 
+val = 5;
+global.MUSICPACK[val, 0] = "Duty";
+global.MUSICPACK[val, 1] = mus_duty;
+global.MUSICPACK[val, 2] = mus_duty_fire;
+global.MUSICPACK[val, 3] = mus_adarkfall;
+global.MUSICPACK[val, 4] = mus_adarkfall_fire;
+
 
 //OBJECTIVE INFO
 val = 0;
@@ -1681,8 +1688,8 @@ fillchar = "`" // used as filler character in input handling.
 filltext = string_repeat(fillchar, 10)
 filltext2 = string_repeat(fillchar, 10)
 
-buildver = "v1.85";
-sandynotes = "- Movement skills.";
+buildver = "v1.86";
+sandynotes = "- Houses.";
 ds_list_add(global.debugList, "build " + buildver + "!!");
 global.debugIndex ++;
 

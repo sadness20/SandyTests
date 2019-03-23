@@ -9,7 +9,9 @@
         "5eddcb96-3a9d-4e2d-9f4e-78b3245eb6c8",
         "25b592e5-888a-4630-8381-81574f9c92b1",
         "04b139ed-4d0e-4190-a8fc-077ef621c57a",
-        "f860e552-aace-45c1-81b0-9d473e32afc7"
+        "f860e552-aace-45c1-81b0-9d473e32afc7",
+        "46942d7c-b031-484a-9bfd-329a59244310",
+        "8a164d96-a06e-4f8d-abf9-9ea2a9d204e1"
     ],
     "filterType": "GMSound",
     "folderName": "Combat",

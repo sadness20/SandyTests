@@ -6,6 +6,11 @@ global.nOptions = 0;
 global.opSelect4 = -1;
 global.opSelect2 = -1;
 
+if(standingNode.type == 6 && standingNode.objectLink != noone && standingNode.objectLink.visited == 0)
+{
+	global.options[global.nOptions] = "Visit";
+	global.nOptions++;
+}
 if(global.CHAR[characterID, 3] == 30 && canAttack && canDance)
 {
 	var next = false;
@@ -23,7 +28,6 @@ if(global.CHAR[characterID, 3] == 30 && canAttack && canDance)
 		global.nOptions++;
 	}
 }
-
 if(ds_list_size(standingNode.cellAttack) > 0 && canAttack)
 {
 	global.options[global.nOptions] = "Attack";

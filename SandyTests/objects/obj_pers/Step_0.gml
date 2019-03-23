@@ -6466,6 +6466,38 @@ switch(state)
 				
 				obj_game.state = "endcombat";
 				audio_sound_gain(obj_game.musDeath, 0, 1000);
+			} else if(obj_game.state == "visiting")
+			{
+				with(obj_game)
+				{
+					opSize = 1;
+					opSize2 = 1;
+					if(global.selectedActor.standingNode.objectLink != noone && global.selectedActor.standingNode.objectLink.visitReward[0] != -1)
+					{
+						global.char1 = global.selectedActor;
+						
+						for(var i = 0; i < 5; i ++)
+						{
+							var reward = global.selectedActor.standingNode.objectLink.visitReward[i];
+							if(reward != -1)ds_list_add(global.itemDrops, reward);
+						}
+						
+						global.selectedActor.standingNode.objectLink.visited = 1;
+						
+						gamestate = "specialevents";
+						state = "specialevents";
+					}
+					else
+					{
+						state = "game";
+						gamestate = "select";
+						
+						EndTurn(global.selectedActor);
+						global.selectedActor = noone;
+						global.showOptions = 0;
+						CleanNodes();
+					}
+				}
 			} else
 			{
 				state = "nextscenehide";
@@ -6903,15 +6935,15 @@ if(gamestate == "prepmap")
 	
 	if(global.hoverNode != noone && global.hoverNode.occupant != noone && global.Ykey_state == 1)
 	{
-		
+		UpdateSkillList(global.hoverNode.occupant.characterID);
 		tempVar = global.hoverNode.occupant;
 		global.glSelect6 = 0;
 		global.glSelect7 = 0;
 		global.glSelect8 = 0;
 		global.hoverNode = noone;
 		
-		var skills = ds_list_size(global.CHAR[tempVar.characterID, 34]);
-		var inventory = ds_list_size(global.CHAR[tempVar.characterID, 49]);
+		//var skills = ds_list_size(global.CHAR[tempVar.characterID, 34]);
+		//var inventory = ds_list_size(global.CHAR[tempVar.characterID, 49]);
 				
 		if(global.glSelect5 != 0 && global.glSelect5 != 1)global.glSelect5 = 0;
 		

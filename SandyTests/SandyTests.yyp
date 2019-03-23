@@ -1511,6 +1511,14 @@
             }
         },
         {
+            "Key": "337e647f-67b3-44ef-a56c-00b749145192",
+            "Value": {
+                "id": "dbcbdd7a-8e24-4c49-8d38-69988b66bcc9",
+                "resourcePath": "sprites\\spr_house\\spr_house.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "345dbaae-274e-4d26-861a-7721606c100d",
             "Value": {
                 "id": "aed60f90-f8bb-4276-aae2-1b05df583f1a",
@@ -2036,6 +2044,14 @@
                 "id": "f7e1993b-d4ef-4c00-8ab9-02e080f12b54",
                 "resourcePath": "sprites\\spr_capture\\spr_capture.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "46942d7c-b031-484a-9bfd-329a59244310",
+            "Value": {
+                "id": "0a07b08e-569b-477a-a520-25edd27ccdfc",
+                "resourcePath": "sounds\\mus_duty\\mus_duty.yy",
+                "resourceType": "GMSound"
             }
         },
         {
@@ -2735,6 +2751,14 @@
             }
         },
         {
+            "Key": "61327017-faa3-45e3-abd5-f3272386fe9a",
+            "Value": {
+                "id": "ba93dffd-7929-4486-9412-33f8962fb98f",
+                "resourcePath": "objects\\obj_house\\obj_house.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "6149c74c-b73f-4a44-98b5-388328c6b832",
             "Value": {
                 "id": "9290de6a-f6bf-4928-8cdc-1fb26cff61c7",
@@ -3156,6 +3180,14 @@
                 "id": "79db92d0-7add-40de-9f4c-2de12746188d",
                 "resourcePath": "sounds\\sfx_lightningSpear\\sfx_lightningSpear.yy",
                 "resourceType": "GMSound"
+            }
+        },
+        {
+            "Key": "715359ba-5416-4ab2-9253-d123a1ce7a1b",
+            "Value": {
+                "id": "ed8c22a9-b885-43d1-9d3e-5c5cda258e29",
+                "resourcePath": "sprites\\spr_houseMarker\\spr_houseMarker.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -3831,6 +3863,14 @@
             }
         },
         {
+            "Key": "8a164d96-a06e-4f8d-abf9-9ea2a9d204e1",
+            "Value": {
+                "id": "4d822900-efcc-4514-8cc7-d5c77a02327c",
+                "resourcePath": "sounds\\mus_duty_fire\\mus_duty_fire.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "8a16dc45-766c-4465-9e03-e33704d7c83e",
             "Value": {
                 "id": "7a2a9e0c-b712-43e2-98d3-04c54cbe0cf7",
@@ -4412,6 +4452,14 @@
                 "id": "5e05d3ae-80b0-49dc-816e-49da342448bd",
                 "resourcePath": "sprites\\spr_rankbox\\spr_rankbox.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "9b966a2d-622b-4b53-ab88-e3a16ca453c3",
+            "Value": {
+                "id": "c0e05a39-0579-4f3f-ad31-7b990582c2fe",
+                "resourcePath": "objects\\obj_houseMarker\\obj_houseMarker.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -7456,10 +7504,8 @@
         "aed6cc44-e61d-4115-aa4e-b6915de7dadf",
         "9b04d976-2b07-4b61-b866-86637542887d",
         "796008fa-df75-449b-a25a-34881111f92c",
-        "bf53c567-ab50-4587-b448-864e94d64daf",
         "33150a9d-139e-40b9-8353-7a154ff564a9",
         "9225ddc7-dd82-4064-b29b-c94f64e7a647",
-        "fa580caf-aa7a-4c8d-9f52-38c33ee761e6",
         "4132181d-3307-4f7e-baf4-bc4065cb8652",
         "ae738e06-eac6-4cde-a613-565d5b2808c8",
         "5ed8c244-1172-4193-b796-02272e7efa69",
@@ -7468,6 +7514,8 @@
         "7de6afcf-2f0c-4543-ae98-80e6d8e236e2",
         "9a9b1aae-87fe-410a-b9c2-1b328572dce4",
         "c83c81f9-150b-4d9d-8f0b-a2f47a57e561",
+        "bf53c567-ab50-4587-b448-864e94d64daf",
+        "fa580caf-aa7a-4c8d-9f52-38c33ee761e6",
         "5b315f75-4ce3-4e66-b378-8532a1556bc6",
         "9c53bde9-bee4-4ea9-b2d5-054f76065e1d",
         "bbdd9351-303d-4719-ba44-c7995e0bafbb",

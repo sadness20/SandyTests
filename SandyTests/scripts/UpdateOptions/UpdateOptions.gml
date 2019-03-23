@@ -2,6 +2,12 @@ with obj_game UpdateWeaponSkill();
 
 global.nOptions = 0;
 
+if(standingNode.type == 6 && standingNode.objectLink != noone && standingNode.objectLink.visited == 0)
+{
+	global.options[global.nOptions] = "Visit";
+	global.nOptions++;
+}
+
 if(global.CHAR[characterID, 3] == 30 && canAttack && canDance)
 {
 	var next = false;

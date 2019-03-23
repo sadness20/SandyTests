@@ -1036,6 +1036,69 @@ switch(state)
 			if(instance_exists(global.char1) && global.char1.faction == 0)state = "endcombatevents"; else state = "endcombatskills";
 		}
 		break;
+	case "specialevents":
+	{
+		state = "temp";
+		if(ds_list_size(global.itemDrops) > 0)
+		{
+			var inventory = global.CHAR[global.char1.characterID, 49];
+			var uses = global.CHAR[global.char1.characterID, 50];
+			var item = ds_list_find_value(global.itemDrops, 0);
+			
+			if(ds_list_size(inventory) >= 5)
+			{
+				tempVar2 = 1;
+				guiTimer3 = 0;
+				guiTimer4 = 0;
+				state = "itemdrop";
+				with obj_musPlayer event_user(2);
+				ov = true;
+				ds_list_add(inventory, item);
+				ds_list_add(uses, global.ITEM[item, 2]);
+				//add to convoy because full
+				/*
+				ds_list_add(global.CHAR[100, 49], item);
+				ds_list_add(global.CHAR[100, 50], global.ITEM[item, 2]);
+				*/
+			}
+			else
+			{
+				tempVar2 = 0;
+				guiTimer3 = 0;
+				guiTimer4 = 0;
+				state = "itemdrop";
+				with obj_musPlayer event_user(2);
+				ov = true;
+				ds_list_add(inventory, item);
+				ds_list_add(uses, global.ITEM[item, 2]);
+			}
+			exit;
+		}
+		if(state == "temp")
+		{
+			state = "game";
+			gamestate = "select";
+
+			EndTurn(global.selectedActor);
+			global.selectedActor = noone;
+			global.showOptions = 0;
+			CleanNodes();
+			
+			if(global.phase == 0)
+			{
+				if(ov == true)
+				{
+					if(global.phase > 0)with obj_musPlayer event_user(4); else with obj_musPlayer event_user(3);
+					ov = false;
+				}
+				else
+				{
+					with obj_musPlayer event_user(1);
+				}
+			}
+		}
+	}
+	break;
 	case "endcombatevents":
 	{
 		state = "temp";
@@ -1421,7 +1484,7 @@ switch(state)
 				guiTimer3 = 0;
 				if(tempVar2 == 0)
 				{
-					state = "endcombatevents";
+					if(gamestate == "specialevents")state = "specialevents"; else state = "endcombatevents";
 					ds_list_delete(global.itemDrops, 0);
 				}
 				else
@@ -1606,7 +1669,7 @@ switch(state)
 					
 					DiscardItem(global.char1.characterID, global.opSelect);
 					
-					state = "endcombatevents";
+					if(gamestate == "specialevents")state = "specialevents"; else state = "endcombatevents";
 					ds_list_delete(global.itemDrops, 0);
 				}
 			}
@@ -4212,6 +4275,16 @@ if(global.showOptions == 1)
 						}
 						gamestate = "chooseweapon";
 						xScroll = 0;
+						exit;
+					}
+					if(global.options[i] == "Visit")
+					{
+						global.showOptions = 0;
+						
+						state = "visiting";
+						gamestate = "idle";
+						if(global.selectedActor.standingNode.objectLink != noone && global.selectedActor.standingNode.objectLink.sceneID != -1)event_user(0);
+						
 						exit;
 					}
 					global.Akey_state = 2;

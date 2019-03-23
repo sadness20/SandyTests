@@ -169,7 +169,7 @@ for(var i = 0; i < 8; i ++)
 global.nChars = 1;
 
 global.CHAR[global.nChars, 0] = "Sadness"; //name
-global.CHAR[global.nChars, 1] = 39; //portrait ID
+global.CHAR[global.nChars, 1] = 11; //portrait ID
 global.CHAR[global.nChars, 2] = 1; //gender
 
 global.CHAR[global.nChars, 3] = 4; //class
@@ -210,7 +210,7 @@ global.CHAR[global.nChars, 34] = ds_list_create(); //activeskills
 
 global.CHAR[global.nChars, 35] = 0; //face type
 global.CHAR[global.nChars, 36] = 0; //eyes type
-global.CHAR[global.nChars, 37] = 0; //hair ID
+global.CHAR[global.nChars, 37] = 13; //hair ID
 global.CHAR[global.nChars, 38] = make_color_rgb(120, 220, 230); //hair color
 global.CHAR[global.nChars, 39] = make_color_rgb(40, 80, 100); //eye color
 

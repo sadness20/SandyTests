@@ -31,3 +31,5 @@ marked4 = 0;
 spawn = noone;
 
 level = 0;
+
+objectLink = noone;
