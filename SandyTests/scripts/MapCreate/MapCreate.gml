@@ -7,7 +7,6 @@ with (obj_node)
 		{
 			case 1: //wall
 				passable = false;
-				cost = 100;
 			
 				break;
 			case 2: //trees
@@ -15,6 +14,9 @@ with (obj_node)
 				cost = 2;
 				break;
 			case 6: //houses
+				objectLink = tempObject.id;
+				break;
+			case 7: //chests
 				objectLink = tempObject.id;
 				break;
 		}

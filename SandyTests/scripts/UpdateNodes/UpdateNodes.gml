@@ -71,7 +71,7 @@ while(ds_priority_size(open) > 0)
 		var check = 1;
 		if(neighbor.occupant != noone && char.hasSkill[0] == 0 && (neighbor.occupant.faction == targetFaction1 || neighbor.occupant.faction == targetFaction2))check = 0;
 		if(abs(neighbor.level - current.level) > 1)check = 0;
-		if(check && ds_list_find_index(closed, neighbor) < 0 && nCost + current.G <= mp)
+		if(neighbor.passable && check && ds_list_find_index(closed, neighbor) < 0 && nCost + current.G <= mp)
 		{
 			if(ds_priority_find_priority(open, neighbor) == 0 || ds_priority_find_priority(open, neighbor) == undefined)
 			{

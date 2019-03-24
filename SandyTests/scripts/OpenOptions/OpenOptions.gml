@@ -11,6 +11,19 @@ if(standingNode.type == 6 && standingNode.objectLink != noone && standingNode.ob
 	global.options[global.nOptions] = "Visit";
 	global.nOptions++;
 }
+var hasKey = 0;
+for(var i = 0; i < ds_list_size(global.CHAR[global.selectedActor.characterID, 49]); i ++)
+{
+	if(global.ITEM[ds_list_find_value(global.CHAR[global.selectedActor.characterID, 49], i), 3] == 5)
+	{
+		hasKey = 1;
+	}
+}
+if(standingNode.type == 7 && standingNode.objectLink != noone && standingNode.objectLink.opened == 0 && hasKey)
+{
+	global.options[global.nOptions] = "Open";
+	global.nOptions++;
+}
 if(global.CHAR[characterID, 3] == 30 && canAttack && canDance)
 {
 	var next = false;

@@ -1,4 +1,4 @@
 sceneID = 1000;
 
-visitReward[0] = 20;
-visitReward[1] = 37;
+itemReward[0] = 20;
+itemReward[1] = 37;

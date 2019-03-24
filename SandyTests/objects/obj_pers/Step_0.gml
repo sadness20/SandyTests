@@ -6472,13 +6472,13 @@ switch(state)
 				{
 					opSize = 1;
 					opSize2 = 1;
-					if(global.selectedActor.standingNode.objectLink != noone && global.selectedActor.standingNode.objectLink.visitReward[0] != -1)
+					if(global.selectedActor.standingNode.objectLink != noone && global.selectedActor.standingNode.objectLink.itemReward[0] != -1)
 					{
 						global.char1 = global.selectedActor;
 						
 						for(var i = 0; i < 5; i ++)
 						{
-							var reward = global.selectedActor.standingNode.objectLink.visitReward[i];
+							var reward = global.selectedActor.standingNode.objectLink.itemReward[i];
 							if(reward != -1)ds_list_add(global.itemDrops, reward);
 						}
 						

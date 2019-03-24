@@ -1,3 +1,3 @@
 sceneID = 1001;
 
-visitReward[0] = 23;
+itemReward[0] = 23;

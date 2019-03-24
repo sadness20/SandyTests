@@ -2805,6 +2805,32 @@ global.ITEM[global.nItems, 22] = 32;
 global.ITEM[global.nItems, 23] = 43; //base resource 1
 
 
+global.nItems = 104;
+
+global.ITEM[global.nItems, 0] = "Key"; //name
+global.ITEM[global.nItems, 1] = 144; //index
+global.ITEM[global.nItems, 2] = 1; //uses
+global.ITEM[global.nItems, 3] = 5; //type
+global.ITEM[global.nItems, 4] = 0; //subtype
+global.ITEM[global.nItems, 5] = 200; //worth
+global.ITEM[global.nItems, 6] = -1; //damage fx
+global.ITEM[global.nItems, 7] = 0; //minrange;
+global.ITEM[global.nItems, 8] = 0; //maxrange;
+global.ITEM[global.nItems, 9] = 0; //animationType
+global.ITEM[global.nItems, 10] = 0; //might
+global.ITEM[global.nItems, 11] = 0; //hit
+global.ITEM[global.nItems, 12] = 0; //crit
+global.ITEM[global.nItems, 13] = 0; //avoid
+global.ITEM[global.nItems, 14] = 0; //damagetype
+global.ITEM[global.nItems, 15] = 0; //animation subtype
+global.ITEM[global.nItems, 16] = -1; //object creation
+global.ITEM[global.nItems, 17] = "Opens doors and chests."; //description
+global.ITEM[global.nItems, 18] = -1; //effectiveness 1
+global.ITEM[global.nItems, 19] = -1; //effectiveness 2
+global.ITEM[global.nItems, 20] = -1; //item rank
+global.ITEM[global.nItems, 21] = 0; //CUSTOM 1 -- particle type
+
+
 ////////////////////////
 
 /*

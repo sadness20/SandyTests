@@ -4287,6 +4287,26 @@ if(global.showOptions == 1)
 						
 						exit;
 					}
+					if(global.options[i] == "Open")
+					{
+						global.showOptions = 0;
+						
+						state = "visiting";
+						gamestate = "idle";
+						if(global.selectedActor.standingNode.objectLink != noone && global.selectedActor.standingNode.objectLink.sceneID != -1)event_user(0);
+						if(global.selectedActor.standingNode.objectLink != noone)
+						{
+							with global.selectedActor.standingNode.objectLink
+							{
+								with instance_nearest(x, y, obj_chest)
+								{
+									image_speed = 0.5;
+								}
+							}
+						}
+						
+						exit;
+					}
 					global.Akey_state = 2;
 				}
 			}

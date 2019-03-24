@@ -24,5 +24,14 @@ with(obj_pers)
 			DialogueStart(1, -1, 0);
 			
 			break;
+		case 1002:
+			ResetDialogue();
+	
+			SetLeftCharacter(1);
+			Dialogue(1, "Wow a compass!");
+						
+			DialogueStart(1, -1, 0);
+			
+			break;
 	}
 }

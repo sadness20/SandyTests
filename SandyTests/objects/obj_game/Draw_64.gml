@@ -743,6 +743,10 @@ if(opSize < 1 && state == "game")
 		opEnd = xx + wid * 4 + 1;
 	    draw_sprite_ext(sprite, 2, xx + wid * 4 + 1, yy + i * rowHeight, 1, 1, 0, bc, 1);
 		
+		if(global.options[i] == "Open" || global.options[i] == "Visit")
+		{
+			if(global.opSelect4 == i)draw_set_color(fontColor9); else draw_set_color(fontColor6);
+		}
 	    draw_text(xx + 4, yy - 8 + i * rowHeight, global.options[i]);
 	}
 	
