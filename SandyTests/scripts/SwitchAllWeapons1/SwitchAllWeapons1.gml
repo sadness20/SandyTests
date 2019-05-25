@@ -19,9 +19,10 @@ while(done == 0)
 	if(ind < 0)ind = ds_list_size(global.CHAR[charID, 49]) - 1;
 	
 	var item = ds_list_find_value(global.CHAR[charID, 49], ind);
-	var isHeal = 0;
-	if(global.selectedActor.weaponType == 2 && global.ITEM[item, 14] == 2)isHeal = 1;
-	if(CanUse(global.selectedActor.characterID, item) && dis >= global.ITEM[item, 7] && dis <= global.ITEM[item, 8] && (global.ITEM[item, 14] != 2 || isHeal == 1))
+	var check = 0;
+	if(allyenemy == 2 && global.ITEM[item, 14] < 2)check = 1;
+	if(allyenemy == 1 && global.ITEM[item, 14] >= 2)check = 1;
+	if(check && CanUse(global.selectedActor.characterID, item) && dis >= global.ITEM[item, 7] && dis <= global.ITEM[item, 8])
 	{
 		done = 1;
 		break;
@@ -31,6 +32,6 @@ while(done == 0)
 if(done == 1 && lastind != ind)
 {
 	Equip(char, ind);
+	
 	audio_play_sound(sfx_scroll, 0, 0);
 }
-

@@ -19,12 +19,19 @@ for(var i = 0; i < ds_list_size(global.CHAR[global.selectedActor.characterID, 49
 		hasKey = 1;
 	}
 }
+for(var i = 0; i < ds_list_size(obj_pers.skillList); i ++)
+{
+	if(global.SKILL[ds_list_find_value(obj_pers.skillList, i), 4] == 70)
+	{
+		hasKey = 1;
+	}
+}
 if(standingNode.type == 7 && standingNode.objectLink != noone && standingNode.objectLink.opened == 0 && hasKey)
 {
 	global.options[global.nOptions] = "Open";
 	global.nOptions++;
 }
-if(global.CHAR[characterID, 3] == 30 && canAttack && canDance)
+if((global.CHAR[characterID, 3] == 30 || global.CHAR[characterID, 3] == 40) && canAttack && canDance)
 {
 	var next = false;
 	for(var i = 0; i < ds_list_size(global.selectedActor.standingNode.neighbors); i ++)

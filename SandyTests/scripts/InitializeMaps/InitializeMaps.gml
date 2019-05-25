@@ -164,7 +164,7 @@ global.MAP[val, 9] = 103; //shopkeeper
 global.MAP[val, 10] = 2; //type
 global.MAP[val, 11] = 0; //terraintype
 global.MAP[val, 12] = 0; //music pack
-global.MAP[val, 13] = 7; //flag value
+global.MAP[val, 13] = 9; //flag value
 global.MAP[val, 14] = 0; //flag type, 0 = stage
 global.MAP[val, 15] = -1; //map width
 global.MAP[val, 16] = -1; //map height
@@ -191,6 +191,26 @@ global.MAP[val, 15] = 25; //map width
 global.MAP[val, 16] = 22; //map height
 if(global.MAP[val, 1] != -1)ds_list_add(global.REGION[global.MAP[val, 1], 2], val);
 
+val = 9;
+global.MAP[val, 0] = "Endgame"; //name
+global.MAP[val, 1] = 0; //region
+global.MAP[val, 2] = 0; //location
+global.MAP[val, 3] = 18; //room
+global.MAP[val, 4] = 3; //climate
+global.MAP[val, 5] = 90; //darkness
+global.MAP[val, 6] = 533; //map X
+global.MAP[val, 7] = 88; //map Y
+global.MAP[val, 8] = false; //unlocked
+global.MAP[val, 9] = 9; //stageID/shopkeeper
+global.MAP[val, 10] = 6; //type
+global.MAP[val, 11] = 0; //terraintype
+global.MAP[val, 12] = 6; //music pack
+global.MAP[val, 13] = 5; //flag value
+global.MAP[val, 14] = 0; //flag type, 0 = stage
+global.MAP[val, 15] = 25; //map width
+global.MAP[val, 16] = 22; //map height
+if(global.MAP[val, 1] != -1)ds_list_add(global.REGION[global.MAP[val, 1], 2], val);
+
 
 //ROOMS
 global.ROOM[0] = rm_map;
@@ -211,3 +231,5 @@ global.ROOM[14] = rm_spooky;
 global.ROOM[15] = rm_grove;
 global.ROOM[16] = rm_wastelands;
 global.ROOM[17] = rm_wastelands2;
+global.ROOM[18] = rm_endgame;
+

@@ -90,18 +90,18 @@ switch(global.currentScene)
 		break;
 	case 1:
 	
-		GenerateEnemies(50, 13, 1);
-		GenerateEnemies(51, 12, 1);
-		GenerateEnemies(52, 14, 1);
-		GenerateEnemies(53, 14, 1);
+		GenerateEnemies(50, 13, -1);
+		GenerateEnemies(51, 12, -1);
+		GenerateEnemies(52, 14, -1);
+		GenerateEnemies(53, 14, -1);
 		
-		GenerateEnemies(54, 14, 1);
-		GenerateEnemies(55, 11, 1);
-		GenerateEnemies(56, 13, 1);
+		GenerateEnemies(54, 14, -1);
+		GenerateEnemies(55, 11, -1);
+		GenerateEnemies(56, 13, -1);
 		
-		GenerateEnemies(57, 13, 1);
-		GenerateEnemies(58, 11, 1);
-		GenerateEnemies(59, 3, 5);
+		GenerateEnemies(57, 13, -1);
+		GenerateEnemies(58, 11, -1);
+		GenerateEnemies(59, 3, -5);
 
 			
 		global.currentMap = 1;
@@ -383,19 +383,19 @@ switch(global.currentScene)
 		break;
 	case 10:
 	
-		GenerateEnemies(50, 9, 2);
-		GenerateEnemies(51, 12, 2);
-		GenerateEnemies(52, 14, 1);
-		GenerateEnemies(53, 17, 2);
+		GenerateEnemies(50, 9, -1);
+		GenerateEnemies(51, 12, -1);
+		GenerateEnemies(52, 14, -1);
+		GenerateEnemies(53, 17, -1);
 		
-		GenerateEnemies(54, 14, 2);
-		GenerateEnemies(55, 11, 2);
-		GenerateEnemies(56, 11, 2);
-		GenerateEnemies(57, 17, 1);
+		GenerateEnemies(54, 14, -1);
+		GenerateEnemies(55, 11, -1);
+		GenerateEnemies(56, 11, -1);
+		GenerateEnemies(57, 17, -1);
 		
-		GenerateEnemies(58, 10, 2);
-		GenerateEnemies(59, 15, 4);
-		GenerateEnemies(60, 16, 5);
+		GenerateEnemies(58, 10, -1);
+		GenerateEnemies(59, 15, -1);
+		GenerateEnemies(60, 16, -1);
 
 			
 		global.currentMap = 2;
@@ -419,7 +419,7 @@ switch(global.currentScene)
 		
 	case 12:
 	
-		GenerateEnemies(50, floor(irandom_range(8, 14)), 1 + floor(random(3)));
+		GenerateEnemies(50, floor(irandom_range(8, 14)), 1 + floor(random(3)), -1);
 			
 		global.currentMap = 4;
 		global.currentStage = global.MAP[global.currentMap, 9];
@@ -445,7 +445,7 @@ switch(global.currentScene)
 		var ran = min(2, round(sqrt(global.gamelevel / 10)));
 		for(var i = 50; i < 80; i ++)
 		{
-			GenerateEnemies(i, floor(global.gamelevel / 10) + floor(random(ran)));
+			GenerateEnemies(i, floor(global.gamelevel / 10) + floor(random(ran)), -1);
 		}
 			
 		global.currentMap = 4;
@@ -462,10 +462,10 @@ switch(global.currentScene)
 		
 	case 15:
 
-		var ran = min(2, round(sqrt((global.gamelevel * 1.25 + 30) / 10)));
+		var ran = min(2, round(sqrt((global.gamelevel * 1.18 + 16) / 10)));
 		for(var i = 50; i < 80; i ++)
 		{
-			GenerateEnemies(i, floor((global.gamelevel * 1.25 + 30) / 10) + floor(random(ran)));
+			GenerateEnemies(i, floor((global.gamelevel * 1.18 + 16) / 10) + floor(random(ran)), -1);
 			if(i < 53)AddItemEnemy(i, 20);
 		}
 			
@@ -485,7 +485,7 @@ switch(global.currentScene)
 		var ran = min(2, round(sqrt(global.gamelevel / 10)));
 		for(var i = 50; i < 80; i ++)
 		{
-			GenerateEnemies(i, floor(global.gamelevel / 10) + floor(random(ran)));
+			GenerateEnemies(i, floor(global.gamelevel / 10) + floor(random(ran)), -1);
 		}
 			
 		global.currentMap = 6;
@@ -504,7 +504,7 @@ switch(global.currentScene)
 		var ran = min(2, round(sqrt((global.gamelevel * 1.25 + 30) / 10)));
 		for(var i = 50; i < 80; i ++)
 		{
-			GenerateEnemies(i, floor((global.gamelevel * 1.25 + 30) / 10) + floor(random(ran)));
+			GenerateEnemies(i, floor((global.gamelevel * 1.25 + 30) / 10) + floor(random(ran)), -1);
 			if(i < 53)AddItemEnemy(i, 20);
 		}
 			
@@ -516,6 +516,25 @@ switch(global.currentScene)
 		
 		state = "chapterbegin";
 		gamestate = "create";
+		showMap = false;
+		
+		break;
+		
+		case 18:
+
+		GenerateEnemies(50, 40, 39);
+		GenerateEnemies(51, 40, 39);
+		GenerateEnemies(52, 40, 39);
+		GenerateEnemies(53, 40, 39);
+		
+		global.currentMap = 9;
+		global.currentStage = global.MAP[global.currentMap, 9];
+		room_goto(global.ROOM[global.MAP[global.currentMap, 3]]);
+		
+		global.currentRegion = global.MAP[global.currentMap, 1];
+		
+		state = "chapterbegin";
+		gamestate = "idle";
 		showMap = false;
 		
 		break;

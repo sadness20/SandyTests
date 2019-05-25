@@ -11,3 +11,4 @@ skycolor = choose(145, 15);
 skyintensity = floor(irandom_range(10, 90));
 if(skycolor == 15 && (room == rm_Arena_cold1 || room == rm_Arena_cold2))skycolor = 145;
 if(skycolor == 145 && (room == rm_wastelands || room == rm_wastelands2))skycolor = 15;
+if(room == rm_endgame)skycolor = 145;

@@ -23,6 +23,7 @@ color = 0;
 
 cellAttack = ds_list_create();
 cellHeal = ds_list_create();
+cellEffects = ds_list_create();
 willbeoccupied = false;
 marked = 0;
 marked2 = 0;

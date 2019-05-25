@@ -26,7 +26,6 @@ for(var i = 0; i < ds_list_size(targetFaction); i ++)
 	for(var ii = 0; ii < ds_list_size(global.CHAR[global.selectedActor.characterID, 49]); ii ++)
 	{
 		var item = ds_list_find_value(global.CHAR[global.selectedActor.characterID, 49], ii);
-		if(global.selectedActor.weaponType == 2 && global.ITEM[item, 14] == 2)isHeal = 1;
 		if(dis >= global.ITEM[item, 7] && dis <= global.ITEM[item, 8] && CanUse(global.selectedActor.characterID, item) && global.ITEM[item, 14] < 2)
 		{
 			if(!(dis <= 1 && abs(global.selectedActor.standingNode.level - enemy.standingNode.level) >= 2))
@@ -51,8 +50,9 @@ for(var ii = 0; ii < ds_list_size(obj_pers.skillList); ii ++)
 	var skillType = global.SKILL[skill, 4];
 	var skillsubType = global.SKILL[skill, 5];
 	var canuse = false;
-	if((skillType == 0) && weaponsinrange > 0 && canAttack)canuse = true;
-	if((skillType == 2) && weaponsinrange > 0 && global.selectedActor.moved == false && canAttack)canuse = true;
+	if((skillType == 0) && weaponsinrange > 0 && global.selectedActor.canAttack)canuse = true;
+	if((skillType == 13) && weaponsinrange > 0 && global.selectedActor.canAttack)canuse = true;
+	if((skillType == 2) && weaponsinrange > 0 && global.selectedActor.moved == false && global.selectedActor.canAttack)canuse = true;
 	if(skillType == 1)
 	{
 		if(skillsubType != 0)
@@ -124,6 +124,16 @@ for(var ii = 0; ii < ds_list_size(obj_pers.skillList); ii ++)
 		}
 	}
 	if(skillType == 63 && global.selectedActor.canAttack)canuse = true;
+	if(skillType == 71 && global.selectedActor.HP > global.SKILL[skill, 12])
+	{
+		for(var i = 0; i < ds_list_size(global.CHAR[global.selectedActor.characterID, 49]); i ++)
+		{
+			if(global.ITEM[ds_list_find_value(global.CHAR[global.selectedActor.characterID, 49], i), 4] == global.SKILL[skill, 13])
+			{
+				canuse = true;
+			}
+		}
+	}
 	if(canuse && global.selectedActor.SP >= max(0, global.SKILL[skill, 3] - global.selectedActor.spbuff - global.selectedActor.spbuff_area))
 	{
 		skillinrange[ii] = true;

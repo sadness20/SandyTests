@@ -8,7 +8,8 @@
         "2734a60b-5568-4146-a27d-909de76ab76a",
         "3f5202a2-9c51-4fe2-8253-9d6b856b98ce",
         "0cce5bbb-36d8-4dd8-beaa-bcc0dfb8ce0a",
-        "8a16dc45-766c-4465-9e03-e33704d7c83e"
+        "8a16dc45-766c-4465-9e03-e33704d7c83e",
+        "4ec03920-635e-4252-8600-ede2346e457c"
     ],
     "filterType": "GMSprite",
     "folderName": "Accessories",

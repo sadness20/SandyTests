@@ -456,7 +456,7 @@ if(state == "combat" || state == "endingcombat" || (reusable1 == 0 && ((state ==
 	if(global.char2.combatSkill != -1)
 	{
 		draw_sprite_ext(spr_showSkill, 0, global.window_w, 55, -1, 0.5, 0, c_white, 0.8);
-		draw_sprite(spr_skills, global.SKILL[global.char2.combatSkill, 2], global.window_w - 4, 38);
+		draw_sprite(spr_skills, global.SKILL[global.char2.combatSkill, 2], global.window_w - 18, 38);
 		draw_set_halign(fa_right);
 		draw_set_color(c_black);
 		draw_text(global.window_w - 20, 28, global.SKILL[global.char2.combatSkill, 0]);
@@ -947,7 +947,31 @@ if(opSize2 < 1 && global.selectedActor != noone)
 				draw_set_color(fontColor2);
 			}
 		}
-		else
+		else if(gamestate == "chooseaugment")
+		{
+			draw_sprite_ext(spr_itemList, ind, xx, yy + i * rowHeight, 1, 1, 0, bc, 1);
+			draw_sprite(spr_items, global.ITEM[item, 1], xx + 2, yy + 2 + i * rowHeight);
+			var usable = false;
+			if(global.SKILL[global.skillSelected, 13] == global.ITEM[item, 4])usable = true;
+			if(usable == true)
+			{
+			    draw_text(xx + 18, yy - 8 + i * rowHeight, global.ITEM[item, 0]);
+		
+				draw_set_halign(fa_right);
+				draw_text(xx + 151, yy - 8 + i * rowHeight, ds_list_find_value(uses, i));
+				draw_set_halign(fa_left);
+			}
+			else
+			{
+				draw_set_color(fontColor5);
+				draw_text(xx + 18, yy - 8 + i * rowHeight, global.ITEM[item, 0]);
+		
+				draw_set_halign(fa_right);
+				draw_text(xx + 151, yy - 8 + i * rowHeight, ds_list_find_value(uses, i));
+				draw_set_halign(fa_left);
+				draw_set_color(fontColor2);
+			}
+		} else
 		{
 			draw_sprite_ext(spr_itemList, ind, xx, yy + i * rowHeight, 1, 1, 0, bc, 1);
 			draw_sprite(spr_items, global.ITEM[item, 1], xx + 2, yy + 2 + i * rowHeight);
@@ -1248,7 +1272,7 @@ if(global.showOptions == 3)
 		draw_set_color(fontColor1);
 	
 		draw_set_halign(fa_center);
-		draw_text(global.window_w - 70 - xd, -4, global.CHAR[char.characterID, 0]);
+		draw_text(global.window_w - 76 - xd, -4, global.CHAR[char.characterID, 0]);
 			
 		if(global.selectedActor.weaponType < 2)
 		{	

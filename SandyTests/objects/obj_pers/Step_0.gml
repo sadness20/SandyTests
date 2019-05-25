@@ -8,13 +8,6 @@ selectSize += 0.125;
 if(selectSize > 360)selectSize = 0;
 sinSize = sin(selectSize);
 
-/*
-if(keyboard_check_pressed(vk_space))
-{
-	SupportXP(0, 1, 25);
-}
-*/
-
 if(global.ctrlKey_state > 0)room_speed = 180; else room_speed = 60;
 
 if(global.upKey_state == -1)global.upKey_state = 0;
@@ -133,7 +126,7 @@ if(keyboard_check_pressed(vk_f12))
 {
 	if(global.debug == false)
 	{
-		//show_debug_overlay(1);
+		show_debug_overlay(1);
 		global.debug = true;
 		text = "" // current text
 		caret = 0 // caret position
@@ -141,7 +134,7 @@ if(keyboard_check_pressed(vk_f12))
 	}
 	else
 	{
-		//show_debug_overlay(0);
+		show_debug_overlay(0);
 		global.debug = false;
 	}
 }
@@ -734,6 +727,7 @@ switch(gamestate)
 			var b1 = 50 + floor(random(instance_number(obj_unit)));
 			var b2 = 50 + floor(random(instance_number(obj_unit)));
 			var b3 = 50 + floor(random(instance_number(obj_unit)));
+			var bkey = 50 + floor(random(instance_number(obj_unit)));
 			
 			/*
 			while(gold == boss)
@@ -760,21 +754,11 @@ switch(gamestate)
 					isBoss = true;
 					xpmult *= 3;
 					var nlevel = floor((global.gamelevel) / 10) + max(4, floor((global.gamelevel) / 10) * 0.35);
-					GenerateEnemies(obj_pers.cid, floor(nlevel));
+					GenerateEnemies(obj_pers.cid, floor(nlevel), -1);
 					//global.CHAR[obj_pers.cid, 4] += floor(nlevel);
 					RefreshChar(id);
 					AddItemEnemy(obj_pers.cid, 21);
 				}
-				/*
-				if(gold == obj_pers.cid)
-				{
-					xpmult *= 3;
-					var nlevel = 0.5 * max(3, global.CHAR[characterID, 4] * 0.35);
-					GenerateEnemies(obj_pers.cid, global.CHAR[characterID, 4] + floor(nlevel));
-					global.CHAR[obj_pers.cid, 4] += floor(nlevel);
-					RefreshChar(id);
-				}
-				*/
 				if(b1 == obj_pers.cid)
 				{
 					AddItemEnemy(obj_pers.cid, 98);
@@ -786,6 +770,10 @@ switch(gamestate)
 				if(b3 == obj_pers.cid)
 				{
 					AddItemEnemy(obj_pers.cid, 100);
+				}
+				if(bkey == obj_pers.cid)
+				{
+					AddItemEnemy(obj_pers.cid, 104);
 				}
 				obj_pers.cid ++;
 			}
@@ -809,6 +797,7 @@ switch(gamestate)
 			//var gold = 50 + floor(random(instance_number(obj_unit)));
 			
 			var b1 = 50 + floor(random(instance_number(obj_unit)));
+			var bkey = 50 + floor(random(instance_number(obj_unit)));
 			
 			/*
 			while(gold == boss)
@@ -835,24 +824,18 @@ switch(gamestate)
 					isBoss = true;
 					xpmult *= 3;
 					var nlevel = floor((global.gamelevel * 1.25 + 30) / 10) + max(4, floor((global.gamelevel * 1.25 + 30) / 10) * 0.35);
-					GenerateEnemies(obj_pers.cid, floor(nlevel));
+					GenerateEnemies(obj_pers.cid, floor(nlevel), -1);
 					//global.CHAR[obj_pers.cid, 4] += floor(nlevel);
 					RefreshChar(id);
 					//AddItemEnemy(obj_pers.cid, 21);
 				}
-				/*
-				if(gold == obj_pers.cid)
-				{
-					xpmult *= 3;
-					var nlevel = 0.5 * max(3, global.CHAR[characterID, 4] * 0.35);
-					GenerateEnemies(obj_pers.cid, global.CHAR[characterID, 4] + floor(nlevel));
-					global.CHAR[obj_pers.cid, 4] += floor(nlevel);
-					RefreshChar(id);
-				}
-				*/
 				if(b1 == obj_pers.cid)
 				{
 					AddItemEnemy(obj_pers.cid, choose(98, 99, 100));
+				}
+				if(bkey == obj_pers.cid)
+				{
+					AddItemEnemy(obj_pers.cid, 104);
 				}
 				obj_pers.cid ++;
 			}
@@ -864,6 +847,7 @@ switch(gamestate)
 			
 			obj_pers.cid = 50;
 			var boss = 50 + floor(random(instance_number(obj_unit)));
+			var bkey = 50 + floor(random(instance_number(obj_unit)));
 			
 			with(obj_unit)
 			{	
@@ -883,7 +867,7 @@ switch(gamestate)
 					isBoss = true;
 					xpmult *= 3;
 					var nlevel = floor((global.gamelevel) / 10) + max(4, floor((global.gamelevel) / 10) * 0.35);
-					GenerateEnemies(obj_pers.cid, floor(nlevel));
+					GenerateEnemies(obj_pers.cid, floor(nlevel), -1);
 
 					//global.CHAR[obj_pers.cid, 4] += floor(nlevel);
 					RefreshChar(id);
@@ -893,6 +877,10 @@ switch(gamestate)
 						AddItemEnemy(obj_pers.cid, 20);
 					}
 					
+				}
+				if(bkey == obj_pers.cid)
+				{
+					AddItemEnemy(obj_pers.cid, 104);
 				}
 				obj_pers.cid ++;
 			}
@@ -907,6 +895,7 @@ switch(gamestate)
 			//var gold = 50 + floor(random(instance_number(obj_unit)));
 			
 			var b1 = 50 + floor(random(instance_number(obj_unit)));
+			var bkey = 50 + floor(random(instance_number(obj_unit)));
 			
 			/*
 			while(gold == boss)
@@ -924,7 +913,7 @@ switch(gamestate)
 				global.map[gridX, gridY].occupant = id;
 				standingNode = global.map[gridX, gridY];
 	
-				characterID = obj_pers.cid;
+				if(characterID == 0)characterID = obj_pers.cid;
 				faction = 1;
 				xpmult = 1;
 				
@@ -933,24 +922,18 @@ switch(gamestate)
 					isBoss = true;
 					xpmult *= 3;
 					var nlevel = floor((global.gamelevel * 1.25 + 30) / 10) + max(4, floor((global.gamelevel * 1.25 + 30) / 10) * 0.35);
-					GenerateEnemies(obj_pers.cid, floor(nlevel));
+					GenerateEnemies(obj_pers.cid, floor(nlevel), -1);
 					//global.CHAR[obj_pers.cid, 4] += floor(nlevel);
 					RefreshChar(id);
 					//AddItemEnemy(obj_pers.cid, 21);
 				}
-				/*
-				if(gold == obj_pers.cid)
-				{
-					xpmult *= 3;
-					var nlevel = 0.5 * max(3, global.CHAR[characterID, 4] * 0.35);
-					GenerateEnemies(obj_pers.cid, global.CHAR[characterID, 4] + floor(nlevel));
-					global.CHAR[obj_pers.cid, 4] += floor(nlevel);
-					RefreshChar(id);
-				}
-				*/
 				if(b1 == obj_pers.cid)
 				{
 					AddItemEnemy(obj_pers.cid, choose(98, 99, 100));
+				}
+				if(bkey == obj_pers.cid)
+				{
+					AddItemEnemy(obj_pers.cid, 104);
 				}
 				obj_pers.cid ++;
 			}
@@ -1109,6 +1092,8 @@ switch(gamestate)
 				guiTimer3 = 0;
 				guiTimer4 = 0;
 				guiTimer5 = 0;
+				
+				if(global.currentMap == 5)global.gamelevel += 18; else if(global.currentMap == 4)global.gamelevel += 15; else if(global.currentMap == 6) global.gamelevel += 8; else global.gamelevel += 12;
 				
 				obj_game.state = "idle";
 				obj_game.gamestate = "idle";
@@ -1474,7 +1459,7 @@ switch(gamestate)
 			}
 			global.showOptions = 0;
 			
-			gamestate = tempVar5;
+			gamestate = tempVar15;
 			if(instance_exists(obj_game))
 			{
 				obj_game.gamestate = "select";
@@ -3086,13 +3071,16 @@ switch(gamestate)
 			draw_set_font(ft_large);
 			draw_set_halign(fa_left);
 			var item = ds_list_find_value(storage, global.glSelect8);
-			if(guiTimer2 >= 90)
+			if(item != undefined)
 			{
-				var txt = DescriptionString(item);
+				if(guiTimer2 >= 90)
+				{
+					var txt = DescriptionString(item);
 					
-				xScroll -= 2;
-				if(xScroll < - 48 - string_width(txt))xScroll = -2;
-			} else guiTimer2 ++;
+					xScroll -= 2;
+					if(xScroll < - 48 - string_width(txt))xScroll = -2;
+				} else guiTimer2 ++;
+			}
 			draw_set_font(ft_med);
 			if(global.Akey_state == 1 && global.glSelect6 == 3)
 			{
@@ -3366,10 +3354,10 @@ switch(gamestate)
 								{
 									if(count > 0 && count < 5)amb *= 1 - count * .2;
 									itempower += round(((i + 1.5) * 1.5) * (amb / 100));
-									if(count < 2)itemuses -= i * 3.35;
+									if(count < 2)itemuses -= i * 2.5;
 									count ++;
 									
-									itemaccuracy -= i * 2.5;
+									itemaccuracy -= i * 1.5;
 								}
 							}
 							if(count >= maxcount && count > 0)
@@ -3735,8 +3723,10 @@ switch(gamestate)
 							if((resource >= 54 && resource <= 58) || resource == 67)
 							{
 								if(count > 4 && count < 8)amb *= 1 - count * .2;
-								itempower += round(2 * (amb / 100));
-								if(itemuses > 20)itemuses -= count * 5;
+								itempower += round(3.3 * (amb / 100));
+								itemuses -= choose(4, 5, 6, 7);
+								if(itemuses < 20)itemuses = 20;
+								itemaccuracy -= choose(3, 4, 5, 6);
 								count ++;
 							}
 							if(count >= maxcount)
@@ -4130,7 +4120,7 @@ switch(gamestate)
 								if(global.ITEM[copy, 2] < 1)global.ITEM[copy, 2] = 1;
 							
 								var cost = totalpower * 50;
-								global.ITEM[copy, 20] = floor(cost / 430);
+								global.ITEM[copy, 20] = floor(cost / 250);
 								if(global.ITEM[copy, 20] > 5)global.ITEM[copy, 20] = 5;
 								
 								checklast = 2;
@@ -4743,6 +4733,7 @@ switch(gamestate)
 					if(char == obj_campUnit.target)instance_destroy();
 				}
 				global.CHAR[obj_campUnit.target.characterID, 0] = "error";
+				global.nprisoners --;
 				
 				obj_campUnit.target.free = 1;
 				obj_campUnit.target = noone;
@@ -5044,7 +5035,7 @@ switch(gamestate)
 	{
 		global.showOptions = 7;
 
-		tempVar5 = gamestate;
+		tempVar15 = gamestate;
 		gamestate = "showmenu";
 		global.glSelect = 0;
 		global.glSelect2 = 0;
@@ -5265,14 +5256,16 @@ switch(gamestate)
 					if(global.glSelect3 == 1)
 					{
 						//sell unit
-						var lvlmult = 0.5 * (global.CHAR[tchar, 4] * 100 + (global.CHAR[tchar, 4] * global.CHAR[tchar, 4]) * 10);
+						var lvl = global.CHAR[tchar, 4];
+						if(global.CLASS[global.CHAR[tchar, 3], 36] == 2)lvl += 20;
+						var lvlmult = 0.5 * (lvl * 100 + (lvl * lvl) * 10);
 					
 						var sum = 0;
 						for(var i = 14; i < 22; i ++)
 						{
 							sum += global.CHAR[tchar, i];
 						}
-						price = floor(250 + lvlmult + 1.7 * (sum * ((200 + sum) / 200)));
+						price = floor(0.4 * (250 + lvlmult + 1.7 * (sum * ((200 + sum) / 200))));
 						
 						global.gold += price;
 						
@@ -5460,8 +5453,8 @@ switch(gamestate)
 					else
 					{
 						
-						tempVar10 += 10;
-						tempVar7 += 10;
+						//tempVar10 += 10;
+						//tempVar7 += 10;
 						global.CHAR[tempVar5, 43] = -1;
 						global.CHAR[tempVar5, 2] = choose(0, 1);
 						
@@ -5890,7 +5883,6 @@ switch(gamestate)
 				}
 				if(global.Akey_state == 1)
 				{
-					tempVar2 = 0;
 					if(selling == 0)
 					{
 						//buyitemmm
@@ -5989,7 +5981,11 @@ switch(gamestate)
 									ds_list_delete(itemList, global.glSelect);
 									ds_list_delete(nupVal, global.glSelect);
 								}
-								
+								if(global.glSelect > ds_list_size(itemList) - 1 && global.glSelect > 0)
+								{
+									global.glSelect --;
+									tempVar2 --;
+								}
 							}
 							else
 							{
@@ -6006,9 +6002,14 @@ switch(gamestate)
 									ds_list_delete(inventory, global.glSelect);
 									ds_list_delete(uses, global.glSelect);
 								}
+								if(global.glSelect > ds_list_size(inventory) - 1 && global.glSelect > 0)
+								{
+									global.glSelect --;
+									tempVar2 --;
+								}
 							}
 						
-							if(global.glSelect > ds_list_size(inventory) - 1 && global.glSelect > 0)global.glSelect --;
+
 						
 							if(ds_list_size(inventory) <= 0)
 							{
@@ -7250,13 +7251,21 @@ if(gamestate == "prepskills")
 			{
 				global.glSelect4 = 1;
 				audio_play_sound(sfx_scroll, 0, 0);
-				if(global.glSelect2 > total2 - 1)global.glSelect2 = total2 - 1;
+				if(global.glSelect2 > total2 - 1)
+				{
+					global.glSelect2 = total2 - 1;
+					guiTimer2 = median(0, 3, global.glSelect2 - 4);
+				}
 			}
 			if(global.leftKey_state == 1 && global.glSelect4 == 1)
 			{
 				global.glSelect4 = 0;
 				audio_play_sound(sfx_scroll, 0, 0);
-				if(global.glSelect2 > total1 - 1)global.glSelect2 = total1 - 1;
+				if(global.glSelect2 > total1 - 1)
+				{
+					global.glSelect2 = total1 - 1;
+					guiTimer2 = median(0, 3, global.glSelect2 - 4);
+				}
 			}
 			
 			if((global.glSelect4 == 0 && total1 > 1) || (global.glSelect4 == 1 && total2 > 1))
@@ -7528,7 +7537,7 @@ if(gamestate == "prepunits")
 				}
 				exit;
 			} else if (global.CHAR[global.glSelect3, 59] == false)audio_play_sound(sfx_error, 0, 0);
-			if(global.CHAR[global.glSelect3, 59] == true)
+			if(global.CHAR[global.glSelect3, 59] == true && global.glSelect3 != 1)
 			{				
 				with(obj_unit)
 				{
@@ -7545,7 +7554,7 @@ if(gamestate == "prepunits")
 						instance_destroy();
 					}
 				}
-			}
+			} else audio_play_sound(sfx_error, 0, 0);
 			exit;
 		}
 	}
@@ -8132,10 +8141,6 @@ if(gamestate == "prepitems")
 				{
 					DiscardItem(itemChar, itemIndex);
 					
-					EquipFirstWeaponGlobal(global.glSelect3);
-					
-					MoveEquipTop(global.glSelect3);
-					
 					if(global.glSelect >= ds_list_size(itemindexList) - 1)global.glSelect --;
 				
 					opSize = 1;
@@ -8144,6 +8149,10 @@ if(gamestate == "prepitems")
 					
 					ds_list_add(global.CHAR[global.glSelect3, 49], item);
 					ds_list_add(global.CHAR[global.glSelect3, 50], uses);
+					
+					EquipFirstWeaponGlobal(global.glSelect3);
+					
+					MoveEquipTop(global.glSelect3);
 					
 					if(global.glSelect2 < 11)
 					{
@@ -8222,13 +8231,14 @@ if(gamestate == "prepitems")
 								global.glSelect4 = 0;
 								
 								DiscardItem(itemChar, itemIndex);
-								AddItemsList(10, global.glSelect3);
+								AddItemsList(-1, global.glSelect3);
 								if(ds_list_size(itemindexList) == 0)global.glSelect = -1;
 								
-								
+								var glevel = global.gamelevel;
+								if(glevel > 300)glevel = 300;
 
 								//IRON
-								var amount = 0, item = 39, chance = round(-50 + (((global.gamelevel + 120) * 2) - (0.0075 * ((global.gamelevel + 120) * (global.gamelevel + 120)))));
+								var amount = 0, item = 39, chance = round(-50 + (((glevel + 120) * 2) - (0.0075 * ((glevel + 120) * (glevel + 120)))));
 								if(chance < 10)chance = 10;
 								if(chance > 90)chance = 90;
 								repeat(5)
@@ -8244,7 +8254,7 @@ if(gamestate == "prepitems")
 								//STEEL
 								amount = 0
 								item = 40
-								chance = round(-50 + (((global.gamelevel + 120) * 2) - (0.0075 * ((global.gamelevel + 120) * (global.gamelevel + 120)))));
+								chance = round(-50 + (((glevel + 120) * 2) - (0.0075 * ((glevel + 120) * (glevel + 120)))));
 								if(chance < 10)chance = 10;
 								if(chance > 90)chance = 90;
 								repeat(5)
@@ -8260,7 +8270,7 @@ if(gamestate == "prepitems")
 								//SILVER
 								amount = 0
 								item = 41
-								chance = round(-90 + (((global.gamelevel + 60) * 2.2) - (0.007 * ((global.gamelevel + 60) * (global.gamelevel + 60)))));
+								chance = round(-90 + (((glevel + 60) * 2.2) - (0.007 * ((glevel + 60) * (glevel + 60)))));
 								if(chance < 15)chance = 15;
 								if(chance > 90)chance = 90;
 								repeat(5)
@@ -8276,7 +8286,7 @@ if(gamestate == "prepitems")
 								//GOLD
 								amount = 0
 								item = 42
-								chance = round(-30 + (((global.gamelevel + 30) * 0.9) - (0.02 * (power(global.gamelevel + 30, 1.6)))));
+								chance = round(-30 + (((glevel + 30) * 0.9) - (0.02 * (power(glevel + 30, 1.6)))));
 								if(chance < 5)chance = 5;
 								if(chance > 90)chance = 90;
 								repeat(5)
@@ -8292,7 +8302,7 @@ if(gamestate == "prepitems")
 								//SANDY
 								amount = 0
 								item = 43
-								chance = round(-15 + (((global.gamelevel) * 0.38) - (0.02 * (power(global.gamelevel, 1.4)))));
+								chance = round(-15 + (((glevel) * 0.38) - (0.02 * (power(glevel, 1.4)))));
 								if(chance < 0)chance = 0;
 								if(chance > 90)chance = 90;
 								repeat(5)
@@ -8335,59 +8345,91 @@ if(gamestate == "prepitems")
 								global.glSelect4 = 0;
 								
 								DiscardItem(itemChar, itemIndex);
-								AddItemsList(10, global.glSelect3);
+								AddItemsList(-1, global.glSelect3);
 								if(ds_list_size(itemindexList) == 0)global.glSelect = -1;
-								
-								
-								var level = (global.gamelevel - 10) / 15;
-								if (level mod 3 == 0)
+								if(floor(random(101)) < 50)
+								{
+									ds_list_add(global.recDrops, 44);
+									ds_list_add(global.recDropsAm, choose(1, 2));
+								}
+								if(floor(random(101)) < 25)
 								{
 									ds_list_add(global.recDrops, 45);
 									ds_list_add(global.recDropsAm, 1);
-									ds_list_add(global.recDrops, 97);
-									ds_list_add(global.recDropsAm, 1);
 								}
-								if (level + 2 mod 12 == 0)
+								if(floor(random(101)) < 25)
 								{
-									ds_list_add(global.recDrops, 60);
+									ds_list_add(global.recDrops, 46);
 									ds_list_add(global.recDropsAm, 1);
 								}
-								if (level mod 6 == 0)
+								if(floor(random(101)) < 25)
 								{
-									ds_list_add(global.recDrops, 59);
+									ds_list_add(global.recDrops, 47);
 									ds_list_add(global.recDropsAm, 1);
 								}
-								if ((level + 1) mod 3 == 0)
+								if(floor(random(101)) < 25)
 								{
 									ds_list_add(global.recDrops, 48);
 									ds_list_add(global.recDropsAm, 1);
 								}
-								if ((level - 1) mod 3 == 0)
+								if(floor(random(101)) < 25)
 								{
 									ds_list_add(global.recDrops, 49);
 									ds_list_add(global.recDropsAm, 1);
 								}
-								
-								var nCrystals = choose(2, 3);
-								repeat(nCrystals)
+								if(floor(random(101)) < 80)
 								{
-									ds_list_add(global.recDrops, choose(50, 51, 52, 53));
+									ds_list_add(global.recDrops, 66);
+									ds_list_add(global.recDropsAm, choose(1, 2));
+								}
+								if(floor(random(101)) < 60)
+								{
+									ds_list_add(global.recDrops, 97);
 									ds_list_add(global.recDropsAm, 1);
 								}
 								
-								ds_list_add(global.recDrops, 44);
-								ds_list_add(global.recDropsAm, choose(1, 2));
 								
-								if ((level - 1) mod 2 == 0)
+								if(floor(random(101)) < 33)
+								{
+									ds_list_add(global.recDrops, 50);
+									ds_list_add(global.recDropsAm, choose(1, 1, 1, 2));
+								}
+								if(floor(random(101)) < 33)
+								{
+									ds_list_add(global.recDrops, 51);
+									ds_list_add(global.recDropsAm, choose(1, 1, 1, 2));
+								}
+								if(floor(random(101)) < 33)
+								{
+									ds_list_add(global.recDrops, 52);
+									ds_list_add(global.recDropsAm, choose(1, 1, 1, 2));
+								}
+								if(floor(random(101)) < 33)
+								{
+									ds_list_add(global.recDrops, 53);
+									ds_list_add(global.recDropsAm, choose(1, 1, 1, 2));
+								}
+								
+
+								if(floor(random(101)) < 5)
+								{
+									ds_list_add(global.recDrops, 60);
+									ds_list_add(global.recDropsAm, 1);
+								}
+								if(floor(random(101)) < 15)
+								{
+									ds_list_add(global.recDrops, 59);
+									ds_list_add(global.recDropsAm, 1);
+								}
+								if(floor(random(101)) < 50)
+								{
+									ds_list_add(global.recDrops, 75);
+									ds_list_add(global.recDropsAm, 1);
+								}
+								
+								repeat(choose(0, 0, 1, 1, 1, 2))
 								{
 									ds_list_add(global.recDrops, choose(68, 93, 94, 95, 96));
-									ds_list_add(global.recDropsAm, 1);
-								}
-								if ((level) mod 2 == 0)
-								{
-									ds_list_add(global.recDrops, choose(46, 47));
-									ds_list_add(global.recDropsAm, 1);
-									ds_list_add(global.recDrops, 75);
 									ds_list_add(global.recDropsAm, 1);
 								}
 								
@@ -8415,13 +8457,17 @@ if(gamestate == "prepitems")
 								global.glSelect4 = 0;
 								
 								DiscardItem(itemChar, itemIndex);
-								AddItemsList(10, global.glSelect3);
+								AddItemsList(-1, global.glSelect3);
 								if(ds_list_size(itemindexList) == 0)global.glSelect = -1;
 							
-								ds_list_add(global.recDrops, choose(54, 55, 56, 57, 58, 67));
+								ds_list_add(global.recDrops, choose(54, 55, 56, 67));
 								ds_list_add(global.recDropsAm, choose(1, 2));
-								ds_list_add(global.recDrops, choose(54, 55, 56, 57, 58, 67));
+								ds_list_add(global.recDrops, choose(54, 55, 56, 67));
 								ds_list_add(global.recDropsAm, choose(2, 3));
+								ds_list_add(global.recDrops, 57);
+								ds_list_add(global.recDropsAm, choose(2, 2, 3));
+								ds_list_add(global.recDrops, 58);
+								ds_list_add(global.recDropsAm, choose(2, 2, 3));
 								
 								ds_list_add(global.recDrops, 66);
 								ds_list_add(global.recDropsAm, choose(1, 2));
@@ -8432,6 +8478,52 @@ if(gamestate == "prepitems")
 				
 								audio_play_sound(sfx_openbox, 0, 0);
 								
+								break;
+								
+							case 4:
+								//arms scroll
+								tempVar = 1;
+								tempVar3 = 1;
+								guiTimer = 0;
+								guiTimer2 = 0;
+								tempVar8 = -100;
+								
+								
+								global.showOptions = 0;
+								global.glSelect4 = 0;
+								
+								DiscardItem(itemChar, itemIndex);
+								AddItemsList(-1, global.glSelect3);
+								if(global.glSelect2 == 0)
+								{
+									if(global.glSelect > 0 && global.glSelect >= ds_list_size(global.CHAR[global.glSelect3, 49]))
+									{
+										global.glSelect --;
+									}
+								}
+								else
+								{
+									if(global.glSelect > 0 && global.glSelect >= ds_list_size(itemindexList))
+									{
+										tempVar2 --;
+										global.glSelect --;
+									}
+								}
+								if(ds_list_size(itemindexList) == 0)global.glSelect = -1;
+								
+								for(var i = 0; i < 10; i ++)
+								{
+									if(global.CLASS[global.CHAR[global.glSelect3, 3], i + 10] == true)
+									{
+										if(global.CHAR[global.glSelect3, i + 22] < 5)global.CHAR[global.glSelect3, i + 22] ++;
+									}
+								}
+								
+								tempVar11 = -1;
+								tempVar10 = 0;
+				
+								audio_play_sound(sfx_openbox, 0, 0);
+							
 								break;
 					}
 				}
@@ -8721,7 +8813,7 @@ if(gamestate == "changeclass")
 				}
 				else
 				{
-					AddItemsList(10, global.glSelect3);
+					AddItemsList(-1, global.glSelect3);
 					DiscardItem(tempVar10, tempVar11);
 					if(ds_list_size(itemindexList) == 0)global.glSelect = -1;
 				}

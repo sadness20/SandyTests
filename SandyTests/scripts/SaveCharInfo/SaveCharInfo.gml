@@ -119,3 +119,6 @@ buffer_write(buf, buffer_u32, char.lightcolor);
 
 buffer_write(buf, buffer_s16, char.lightxpos);
 buffer_write(buf, buffer_s16, char.lightypos);
+
+buffer_write(buf, buffer_bool, char.isGhost);
+buffer_write(buf, buffer_bool, char.canGaleforce);

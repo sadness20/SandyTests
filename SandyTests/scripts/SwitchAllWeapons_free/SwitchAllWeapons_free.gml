@@ -14,10 +14,11 @@ while(done == 0)
 	ind ++;
 	
 	var item = ds_list_find_value(global.CHAR[charID, 49], ind);
+	
 	var check = 0;
 	if(targetLis == 1 && global.ITEM[global.CHAR[global.selectedActor.characterID, 44], 14] >= 2)check = 1;
 	if(targetLis == 2 && global.ITEM[global.CHAR[global.selectedActor.characterID, 44], 14] < 2)check = 1;
-	if(global.ITEM[item, 4] >= 10 && weaponinrange[ind] && check)
+	if(item != undefined && global.ITEM[item, 4] >= 10 && weaponinrange[ind] && check)
 	{
 		done = 1;
 		break;

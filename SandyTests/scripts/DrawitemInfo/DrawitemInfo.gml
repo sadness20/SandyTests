@@ -3,7 +3,7 @@ var item = argument[0];
 //blackbar
 
 //var dr = 0;
-if(item != -1)
+if(item != -1 && item != undefined)
 {
 	var a = 0;
 	draw_set_alpha(0.6);

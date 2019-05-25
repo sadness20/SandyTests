@@ -68,7 +68,6 @@ else
 		global.newTurn = 1;
 		obj_game.gamestate = "newturn";
 	}
-	//with instance_create_layer(0, 0, "back", obj_phase) index = global.newTurn;
 	with obj_musPlayer event_user(2);
 	
 	global.phase = global.newTurn;

@@ -105,6 +105,18 @@ switch(state)
 
 			lighttype=spr_light;
 		}
+		if(characterID == 2)
+		{
+			lightpower=300;
+			lightalpha=70;
+			lightcolor=make_color_rgb(160, 255, 235);
+			lightjitter=0;
+
+			lightxpos=0;
+			lightypos=-30;
+
+			lighttype=spr_light;
+		}
 		
 		state = "preparation";
 		
@@ -627,7 +639,7 @@ switch(state)
 											break;
 										case 21:
 										
-											if(damage >= target.HP)
+											if(damage >= target.HP && target.isGhost == 0)
 											{
 												target.captured = 1;
 												if(!(global.phase == 1 && global.optionState[7] == 1))
@@ -673,6 +685,7 @@ switch(state)
 												var spfx = instance_create_depth(target.cx + 16, target.cy + target.combatvy + 16, -7000, obj_combatFX);
 												spfx.sprite_index = spr_luna;
 												spfx.image_speed = 1.5;
+												if(global.char2 == id)spfx.xscale *= -1;
 											}
 										
 											break;
@@ -827,7 +840,7 @@ switch(state)
 			{
 				dis2 = startdis;
 			}
-			returnMult = 0.25;
+			//returnMult = 0.25;
 		}
 		if(dis < dis2 - 6 && !(global.phase == 1 && global.optionState[7] == 1))
 		{
@@ -932,6 +945,24 @@ switch(state)
 		if((dieTimer mod 5) == 0)vis = !vis;
 		if(dieTimer >= 40 || (global.phase == 1 && global.optionState[7] == 1))
 		{
+			if(characterID == 2)
+			{
+				audio_play_sound(sfx_hitLightning, 0, 0);
+				with(obj_unit)
+				{
+					if(faction == other.faction)
+					{
+						AddBuff(6, -99, 100, 1000, 0, 0);
+						AddBuff(7, -99, 100, 1001, 0, 0);
+						
+						var spfx = instance_create_depth(x + 16, y + 8 - 64, -7000, obj_combatFX2);
+						spfx.sprite_index = spr_electrify;
+						spfx.xscale = 50;
+						spfx.yscale = 50;
+					}
+				}
+			}
+			
 			dieTimer = 0;
 			vis = 2;
 			state = "dieFade";

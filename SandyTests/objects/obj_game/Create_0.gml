@@ -14,7 +14,6 @@ global.char1 = noone;
 global.char2 = noone;
 global.rangeToggle = false;
 global.enemyUpdated = true;
-global.dirSelect = false;
 global.targetOp = noone;
 global.nSpawns = 0;
 global.glSelect5 = 0;

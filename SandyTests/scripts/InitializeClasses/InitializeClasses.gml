@@ -121,7 +121,7 @@ global.CLASS[class, 22] = -1;  //accessory
 global.CLASS[class, 23] = false;  //hide hair
 
 global.CLASS[class, 24] = 10;//hpgrowth
-global.CLASS[class, 25] = 10;//strgrowth
+global.CLASS[class, 25] = 30;//strgrowth
 global.CLASS[class, 26] = 5;//maggrowth
 global.CLASS[class, 27] = 15;//skillgrowth
 global.CLASS[class, 28] = 20;//spdgrowth
@@ -894,7 +894,7 @@ global.CLASS[class, 22] = -1;  //accessory
 global.CLASS[class, 23] = false;  //hide hair
 
 global.CLASS[class, 24] = 10;//hpgrowth
-global.CLASS[class, 25] = 15;//strgrowth
+global.CLASS[class, 25] = 30;//strgrowth
 global.CLASS[class, 26] = 0;//maggrowth
 global.CLASS[class, 27] = 10;//skillgrowth
 global.CLASS[class, 28] = 10;//spdgrowth
@@ -1486,12 +1486,12 @@ global.CLASS[class, 29] = 20;//lckgrowth
 global.CLASS[class, 30] = 10;//defgrowth
 global.CLASS[class, 31] = 15;//resgrowth
 
-global.CLASS[class, 32] = -1; //promotion1
-global.CLASS[class, 33] = -1; //promotion2
+global.CLASS[class, 32] = 3; //promotion1
+global.CLASS[class, 33] = 40; //promotion2
 global.CLASS[class, 34] = -1; //promotion3
 global.CLASS[class, 35] = -1; //promotion4
 
-global.CLASS[class, 36] = 3; //promotionlevel
+global.CLASS[class, 36] = 1; //promotionlevel
 global.CLASS[class, 37] = 5; //base class MP
 
 global.CLASS[class, 38] = spr_dancer_female; //male sprite
@@ -1882,5 +1882,102 @@ global.CLASS[class, 37] = 5; //base class MP
 
 global.CLASS[class, 38] = spr_hoshidonoble_female; //male sprite
 global.CLASS[class, 39] = spr_hoshidonoble_female; //female sprite
+
+global.CLASS[class, 40] = 4; //skill template
+
+
+class = 39;
+global.CLASS[class, 0] = "Spellsword"; //name
+global.CLASS[class, 1] = "wowza"; //description
+global.CLASS[class, 2] = "Spellsword"; //name
+global.CLASS[class, 3] = "wowza"; //description
+global.CLASS[class, 4] = 30; //frame data
+global.CLASS[class, 5] = 0; //fly height
+global.CLASS[class, 6] = 0; //combat fly height
+global.CLASS[class, 7] = sfx_footstep; //footstep sound
+global.CLASS[class, 8] = 7; //footstep timer
+global.CLASS[class, 9] = 3; //speed
+global.CLASS[class, 10] = true; //can use swords
+global.CLASS[class, 11] = false; //can use lances
+global.CLASS[class, 12] = false; //can use axes
+global.CLASS[class, 13] = false; //can use daggers
+global.CLASS[class, 14] = false; //can use bows
+global.CLASS[class, 15] = false; //can use light
+global.CLASS[class, 16] = true; //can use dark
+global.CLASS[class, 17] = true; //can use anima
+global.CLASS[class, 18] = false; //can use staves
+global.CLASS[class, 19] = false; //can use stones
+global.CLASS[class, 20] = 2; //deathframe
+global.CLASS[class, 21] = 0; //type, 0 = human, 1 = pegasus, 2 = horsey
+global.CLASS[class, 22] = -1;  //accessory
+global.CLASS[class, 23] = false;  //hide hair
+
+global.CLASS[class, 24] = 15;//hpgrowth
+global.CLASS[class, 25] = 15;//strgrowth
+global.CLASS[class, 26] = 15;//maggrowth
+global.CLASS[class, 27] = 15;//skillgrowth
+global.CLASS[class, 28] = 15;//spdgrowth
+global.CLASS[class, 29] = 15;//lckgrowth
+global.CLASS[class, 30] = 15;//defgrowth
+global.CLASS[class, 31] = 15;//resgrowth
+
+global.CLASS[class, 32] = -1; //promotion1
+global.CLASS[class, 33] = -1; //promotion2
+global.CLASS[class, 34] = -1; //promotion3
+global.CLASS[class, 35] = -1; //promotion4
+
+global.CLASS[class, 36] = 2; //promotionlevel
+global.CLASS[class, 37] = 5; //base class MP
+
+global.CLASS[class, 38] = spr_masterninja_female; //male sprite
+global.CLASS[class, 39] = spr_masterninja_female; //female sprite
+
+global.CLASS[class, 40] = 4; //skill template
+
+class = 40;
+global.CLASS[class, 0] = "Blade Dancer"; //name
+global.CLASS[class, 1] = "Dances with blades."; //description
+global.CLASS[class, 2] = "Blade Dancer"; //name
+global.CLASS[class, 3] = "Dances with blades."; //description
+global.CLASS[class, 4] = 30; //frame data
+global.CLASS[class, 5] = 0; //fly height
+global.CLASS[class, 6] = 0; //combat fly height
+global.CLASS[class, 7] = sfx_footstep; //footstep sound
+global.CLASS[class, 8] = 7; //footstep timer
+global.CLASS[class, 9] = 3; //speed
+global.CLASS[class, 10] = true; //can use swords
+global.CLASS[class, 11] = false; //can use lances
+global.CLASS[class, 12] = false; //can use axes
+global.CLASS[class, 13] = true; //can use daggers
+global.CLASS[class, 14] = false; //can use bows
+global.CLASS[class, 15] = false; //can use light
+global.CLASS[class, 16] = false; //can use dark
+global.CLASS[class, 17] = false; //can use anima
+global.CLASS[class, 18] = false; //can use staves
+global.CLASS[class, 19] = false; //can use stones
+global.CLASS[class, 20] = 2; //deathframe
+global.CLASS[class, 21] = 0; //type, 0 = human, 1 = pegasus, 2 = horsey
+global.CLASS[class, 22] = -1;  //accessory
+global.CLASS[class, 23] = false;  //hide hair
+
+global.CLASS[class, 24] = 15;//hpgrowth
+global.CLASS[class, 25] = 25;//strgrowth
+global.CLASS[class, 26] = 0;//maggrowth
+global.CLASS[class, 27] = 15;//skillgrowth
+global.CLASS[class, 28] = 25;//spdgrowth
+global.CLASS[class, 29] = 0;//lckgrowth
+global.CLASS[class, 30] = 10;//defgrowth
+global.CLASS[class, 31] = 15;//resgrowth
+
+global.CLASS[class, 32] = -1; //promotion1
+global.CLASS[class, 33] = -1; //promotion2
+global.CLASS[class, 34] = -1; //promotion3
+global.CLASS[class, 35] = -1; //promotion4
+
+global.CLASS[class, 36] = 2; //promotionlevel
+global.CLASS[class, 37] = 5; //base class MP
+
+global.CLASS[class, 38] = spr_masterninja_female; //male sprite
+global.CLASS[class, 39] = spr_masterninja_female; //female sprite
 
 global.CLASS[class, 40] = 4; //skill template

@@ -1,4 +1,4 @@
-global.textPosition = 0; //0 = normal, 1 = top
+global.textPosition = -1; //0 = normal, 1 = top
 global.textAlign = -1; //-1 = left, 0 = center, 1 = right
 global.textType = 0; //0 = normal, 1 = small
 global.charDial[0] = -1;

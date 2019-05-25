@@ -79,7 +79,7 @@ if(state != "action" && state != "tomap")
 			other.state = "action";
 			global.showOptions = 7;
 
-			tempVar5 = gamestate;
+			tempVar15 = gamestate;
 			gamestate = "showmenu";
 			global.glSelect = 0;
 			global.glSelect2 = 0;

@@ -76,14 +76,14 @@ for(var i = 200; i < 200 + global.nCustom; i ++)
 	buffer_write(buf, buffer_s8, global.ITEM[i, 33]);
 }
 
-for(var ii = 0; ii < 30; ii ++)
+for(var ii = 0; ii < 60; ii ++)
 {
 	var s1 = -1;
 	s1 = ds_list_find_value(global.resourceBox, ii);
 	if(s1 == undefined)s1 = -1;
 	buffer_write(buf, buffer_s16, s1);
 }
-for(var ii = 0; ii < 30; ii ++)
+for(var ii = 0; ii < 60; ii ++)
 {
 	var s1 = -1;
 	s1 = ds_list_find_value(global.resourceBoxAm, ii);
@@ -132,7 +132,7 @@ for(var i = 0; i < 70; i ++)
 	buffer_write(buf, buffer_u8, global.CHAR[i, 4]);
 	buffer_write(buf, buffer_u8, global.CHAR[i, 5]);
 	
-	buffer_write(buf, buffer_u8, global.CHAR[i, 6]);
+	buffer_write(buf, buffer_u16, global.CHAR[i, 6]);
 	buffer_write(buf, buffer_u8, global.CHAR[i, 7]);
 	buffer_write(buf, buffer_u8, global.CHAR[i, 8]);
 	buffer_write(buf, buffer_u8, global.CHAR[i, 9]);
@@ -277,7 +277,7 @@ for(var i = 150; i < 180; i ++)
 	buffer_write(buf, buffer_u8, global.CHAR[i, 4]);
 	buffer_write(buf, buffer_u8, global.CHAR[i, 5]);
 	
-	buffer_write(buf, buffer_u8, global.CHAR[i, 6]);
+	buffer_write(buf, buffer_u16, global.CHAR[i, 6]);
 	buffer_write(buf, buffer_u8, global.CHAR[i, 7]);
 	buffer_write(buf, buffer_u8, global.CHAR[i, 8]);
 	buffer_write(buf, buffer_u8, global.CHAR[i, 9]);

@@ -10,7 +10,7 @@
     "option_windows_copyright_info": "wow",
     "option_windows_description_info": "wow",
     "option_windows_display_cursor": true,
-    "option_windows_display_name": "Saga of Spirits v1.86",
+    "option_windows_display_name": "Saga of Spirits v2.00",
     "option_windows_enable_steam": false,
     "option_windows_executable_name": "${project_name}",
     "option_windows_icon": "${options_dir}\\windows\\icons\\icon.ico",

@@ -131,23 +131,23 @@ if(global.glSelect7 < 2)
 			switch(global.CHAR[charID, 22 + i])
 			{
 				case 0:
-				xptolvl = 20;
+				xptolvl = 10;
 				break;
 	
 				case 1:
-				xptolvl = 30;
+				xptolvl = 15;
 				break;
 
 				case 2:
-				xptolvl = 45;
+				xptolvl = 25;
 				break;
 
 				case 3:
-				xptolvl = 65;
+				xptolvl = 35;
 				break;
 
 				case 4:
-				xptolvl = 90;
+				xptolvl = 50;
 				break;
 
 				case 5:
@@ -176,7 +176,8 @@ else
 	//draw_clear_alpha(c_black, 0);
 	draw_set_halign(fa_left);
 	
-	DrawUnit(charID, tcindex, tindex, 240 - 80, 36, 1, 1, c_white, 1, 0, 3, 0);
+	if(char.isGhost == 0)DrawUnit(charID, tcindex, tindex, 240 - 80, 36, 1, 1, c_white, 1, 0, 3, 0);
+	else DrawUnit(charID, tcindex, tindex, 240 - 80, 36, 1, 1, c_white, 1, 0, 6, 0);
 	draw_set_font(ft_large);
 	draw_set_color(fontColor2);
 	draw_text(194, 30, global.CHAR[charID, 0]);
@@ -392,7 +393,14 @@ if(global.glSelect7 == 0)
 		}
 	}
 	draw_sprite(spr_boxx, 0, xx + 245.5, yy + 150 + ay);
-	if(type == 1)with char DrawUnit(characterID, cindex, index, xx + 248, yy + 151 + ay, 1, 1, c_white, 1, faction, 3, 0);
+	if(type == 1)
+	{
+		with char
+		{
+			if(isGhost == 0)DrawUnit(characterID, cindex, index, xx + 248, yy + 151 + ay, 1, 1, c_white, 1, faction, 3, 0);
+			else DrawUnit(characterID, cindex, index, xx + 248, yy + 151 + ay, 1, 1, c_white, 1, faction, 6, 0);
+		}
+	}
 	else DrawUnit(charID, tcindex, tindex, xx + 248, yy + 151 + ay, 1, 1, c_white, 1, 0, 3, 0);
 	
 	for(var i = 0; i < ds_list_size(skills); i ++)

@@ -1,5 +1,6 @@
 var charID = argument[0];
 var level = argument[1];
+var classOverride = argument[2];
 
 if(global.CHAR[charID, 33] != -1)
 {
@@ -26,19 +27,24 @@ if(level > 20)
 		global.CHAR[charID, 6 + i] += 2;
 	}
 }
+if(level > 45)
+{
+	global.CHAR[charID, 4] = 45;
+	level = global.CHAR[charID, 4];
+}
 ds_list_shuffle(classList);
 var class = ds_list_find_value(classList, 0);
 ds_list_destroy(classList);
 
 global.CHAR[charID, 2] = choose(0, 1); //gender
-global.CHAR[charID, 0] = global.CLASS[class, global.CHAR[charID, 2] * 2]; //name
 //global.CHAR[charID, 1] = global.TEMPLATE[templateID, 1]; //portrait sprite
 
-global.CHAR[charID, 3] = class; //class
+if(classOverride != -1)global.CHAR[charID, 3] = classOverride; else global.CHAR[charID, 3] = class; //class
+global.CHAR[charID, 0] = global.CLASS[global.CHAR[charID, 3], global.CHAR[charID, 2] * 2]; //name
 global.CHAR[charID, 4] = level; //level
 global.CHAR[charID, 5] = 0; //exp
 
-var skilltemplateID = global.CLASS[class, 40];
+var skilltemplateID = global.CLASS[global.CHAR[charID, 3], 40];
 global.CHAR[charID, 6] = 5 + floor((global.SKILLTEMPLATE[skilltemplateID, 1] + choose(-10, -5, 0, 5, 10)) / 6.5) + floor(((global.SKILLTEMPLATE[skilltemplateID, 1] + choose(-10, -5, 0, 5, 10)) / 100) * level); //hp
 global.CHAR[charID, 7] = floor((global.SKILLTEMPLATE[skilltemplateID, 2] + choose(-10, -5, 0, 5, 10)) / 12) + floor(((global.SKILLTEMPLATE[skilltemplateID, 2] + choose(-10, -5, 0, 5, 10)) / 100) * level); //str
 global.CHAR[charID, 8] = floor((global.SKILLTEMPLATE[skilltemplateID, 3] + choose(-10, -5, 0, 5, 10)) / 12) + floor(((global.SKILLTEMPLATE[skilltemplateID, 3] + choose(-10, -5, 0, 5, 10)) / 100) * level); //mag
@@ -72,7 +78,7 @@ global.CHAR[charID, 28] = rank; //lighttome
 global.CHAR[charID, 29] = rank; //animaatome
 global.CHAR[charID, 30] = rank; //staffrank
 global.CHAR[charID, 31] = rank; //stonerank
-global.CHAR[charID, 32] = global.CLASS[class, 37] ; //MP
+global.CHAR[charID, 32] = global.CLASS[global.CHAR[charID, 3], 37] ; //MP
 global.CHAR[charID, 33] = ds_list_create(); //skills
 global.CHAR[charID, 34] = ds_list_create(); //activeskills
 
@@ -204,7 +210,7 @@ var item = 0;
 for(var i = 0; i <= global.nItems; i ++)
 {
 	var check = 1;
-	if(global.CLASS[class, 18] == true && global.ITEM[i, 4] != 18)check = 0;
+	if(global.CLASS[global.CHAR[charID, 3], 18] == true && global.ITEM[i, 4] != 18)check = 0;
 	if(check && CanUse(charID, i) && (global.ITEM[i, 4] == 18 || global.ITEM[i, 20] >= floor(rank / 2)))ds_list_add(itemList, i);
 }
 ds_list_shuffle(itemList);
@@ -298,7 +304,22 @@ if(global.CHAR[charID, 44] == -1)
 
 EquipFirstWeaponGlobal(charID);
 
-if(level > 20)
+if(global.CHAR[charID, 4] > 20)
 {
 	global.CHAR[charID, 4] -= 20;
+}
+if(global.CHAR[charID, 4] > 20)
+{
+	global.CHAR[charID, 4] = 20;
+	
+	global.CHAR[charID, 22] = choose(4, 5); //swordrank
+	global.CHAR[charID, 23] = choose(4, 5); //lancerank
+	global.CHAR[charID, 24] = choose(4, 5); //axerank
+	global.CHAR[charID, 25] = choose(4, 5); //daggerrank
+	global.CHAR[charID, 26] = choose(4, 5); //bowrank
+	global.CHAR[charID, 27] = choose(4, 5); //darktome 
+	global.CHAR[charID, 28] = choose(4, 5); //lighttome
+	global.CHAR[charID, 29] = choose(4, 5); //animaatome
+	global.CHAR[charID, 30] = choose(4, 5); //staffrank
+	global.CHAR[charID, 31] = choose(4, 5); //stonerank
 }

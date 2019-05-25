@@ -17,7 +17,8 @@
         "a808ca4a-4215-4d15-9d6d-bf32a0840b30",
         "3994a328-999b-4b53-ad28-5b0ed50c54c3",
         "9b966a2d-622b-4b53-ab88-e3a16ca453c3",
-        "fb699560-1308-4d16-a6b1-c7c8573d1a15"
+        "fb699560-1308-4d16-a6b1-c7c8573d1a15",
+        "2ac0fa8e-0614-4401-af99-00a6513a7e5d"
     ],
     "filterType": "GMObject",
     "folderName": "Markers",

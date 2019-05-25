@@ -13,3 +13,6 @@ walkDir = 96;
 
 lead = 0;
 reinScene = 0;
+
+gridX = floor(x / global.gridSize);
+gridY = floor(y / global.gridSize);

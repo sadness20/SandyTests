@@ -27,4 +27,9 @@ with obj_nodeDrawer1
 	yTo = ypos * global.gridSize;
 }
 
-global.hoverNode = global.map[cx, cy];
+if(cx >= 0 && cy >= 0 && cx <= global.mapWidth && cy <= global.mapHeight)global.hoverNode = global.map[cx, cy]; else
+{
+	cx = 0;
+	cy = 0;
+	global.hoverNode = global.map[cx, cy];
+}

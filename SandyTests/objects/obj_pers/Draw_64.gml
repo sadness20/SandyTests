@@ -2597,23 +2597,23 @@ if(gamestate == "shop")
 					switch(global.CHAR[char, 22 + i])
 					{
 						case 0:
-						xptolvl = 20;
+						xptolvl = 10;
 						break;
 	
 						case 1:
-						xptolvl = 30;
+						xptolvl = 15;
 						break;
 
 						case 2:
-						xptolvl = 45;
+						xptolvl = 25;
 						break;
 
 						case 3:
-						xptolvl = 65;
+						xptolvl = 35;
 						break;
 
 						case 4:
-						xptolvl = 90;
+						xptolvl = 50;
 						break;
 
 						case 5:
@@ -2847,23 +2847,23 @@ if(gamestate == "unitshop")
 					switch(global.CHAR[char, 22 + i])
 					{
 						case 0:
-						xptolvl = 20;
+						xptolvl = 10;
 						break;
 	
 						case 1:
-						xptolvl = 30;
+						xptolvl = 15;
 						break;
 
 						case 2:
-						xptolvl = 45;
+						xptolvl = 25;
 						break;
 
 						case 3:
-						xptolvl = 65;
+						xptolvl = 35;
 						break;
 
 						case 4:
-						xptolvl = 90;
+						xptolvl = 50;
 						break;
 
 						case 5:
@@ -3014,14 +3014,16 @@ if(gamestate == "unitshop")
 		{
 			var char = ds_list_find_value(global.charList, global.glSelect2);
 			
-			var lvlmult = 0.5 * (global.CHAR[char, 4] * 100 + (global.CHAR[char, 4] * global.CHAR[char, 4]) * 10);
+			var lvl = global.CHAR[char, 4];
+			if(global.CLASS[global.CHAR[char, 3], 36] == 2)lvl += 20;
+			var lvlmult = 0.5 * (lvl * 100 + (lvl * lvl) * 10);
 					
 			var sum = 0;
 			for(var i = 14; i < 22; i ++)
 			{
 				sum += global.CHAR[char, i];
 			}
-			price = floor(250 + lvlmult + 1.7 * (sum * ((200 + sum) / 200)));
+			price = floor(0.4 * (250 + lvlmult + 1.7 * (sum * ((200 + sum) / 200))));
 			
 			
 			draw_sprite(spr_menuTop, 0, 0, - 36 + vx * 36);
@@ -3139,7 +3141,7 @@ if(gamestate == "unitshop")
 				break;
 				case 3:
 				
-				str = "10 gold to reroll!";
+				str = "Reroll a unit's appearance!";
 				
 				break;
 			}
@@ -3450,7 +3452,6 @@ switch(gamestate)
 	
 	//draw_sprite(spr_bigMessage, 0, 0, 0);
 	draw_set_halign(fa_center);
-	draw_set_color(fontColor1);
 	var text = "Item sent to the convoy.";
 	MessageBox(text);
 	draw_text(200, 102, text)
@@ -3462,6 +3463,7 @@ switch(gamestate)
 	
 	draw_set_halign(fa_left);
 	
+	draw_set_color(fontColor1);
 	draw_sprite(spr_menuTop, 0, 0, 0);
 	draw_text(9, -1, global.ITEM[tempVar11, 0] + " was sent to the convoy.");
 	
@@ -3639,10 +3641,7 @@ if(state == "dialogue" || state == "hide" || state == "show" || state == "enddia
 	var post = true;
 	if(global.charDial[0] != -1 && global.CHAR[global.charDial[0], 51] == true)post = false;
 	if(global.charDial[1] != -1 && global.CHAR[global.charDial[1], 51] == true)post = false;
-	
-	//show_message(string(textboxDirection) + ", " + string(global.textboxAlpha));
-	//draw_sprite_ext(boxSprite, 0, xpos, ypos, 1, 1, 0, c_white,1);
-	draw_sprite_ext(boxSprite, 0, xpos, ypos + ((- 54 * textboxDirection) + (54 * global.textboxAlpha * textboxDirection * global.backgroundcharPos)), 1, 1, 0, c_white, global.textboxAlpha);
+	if(global.textPosition != -1)draw_sprite_ext(boxSprite, 0, xpos, ypos + ((- 54 * textboxDirection) + (54 * global.textboxAlpha * textboxDirection * global.backgroundcharPos)), 1, 1, 0, c_white, global.textboxAlpha);
 	//show_message("fortnite");
 	draw_set_font(ft_med);
 	draw_set_color(fontColor2);
@@ -3714,6 +3713,7 @@ if(state == "dialogue" || state == "hide" || state == "show" || state == "enddia
 			draw_sprite_ext(spr_dialogueName, 0, 9 + xxpos, global.window_h - 71, 1, 1, 0, c_white, global.textboxAlpha * (global.backgroundcharPos))
 			draw_set_color(fontColor1);
 			draw_set_halign(fa_center);
+			
 			draw_text(63 + xxpos, global.window_h - 79, global.CHAR[global.step[global.currentStep, 0], 0]);
 			draw_set_halign(fa_left);
 		}
@@ -5174,7 +5174,7 @@ if(global.simpleFadeout > 0)
 	draw_set_alpha(1);
 }
 
-
+/*
 if(global.debug)
 {
 	draw_set_font(ft_debug);
@@ -5197,8 +5197,9 @@ if(global.debug)
 	draw_text(12, 24 + 12 * 2, "obj_game [guiTimer4] " + string(obj_game.guiTimer4));
 	}
 }
+*/
 
-	
+	//draw_text(12, 96, "gamelevel: " + string(global.gamelevel));
 	
 	
 	

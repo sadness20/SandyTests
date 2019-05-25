@@ -85,7 +85,7 @@ while(ds_priority_size(open) > 0)
 				{
 					mir = char.minRangeAlly;
 					mar = char.maxRangeAlly;
-					//if(mir == 1 && mar == 1)checkRange1(neighbor.gridX, neighbor.gridY, 1);else
+					if(mir == 1 && mar == 1)checkRange1(neighbor.gridX, neighbor.gridY, 1);else
 					if(mir == 1 && mar == 2)checkRange1_2(neighbor.gridX, neighbor.gridY, 1);else
 					if(mir == 2 && mar == 2)checkRange2(neighbor.gridX, neighbor.gridY, 1);else
 					if(mir == 2 && mar == 3)checkRange2_3(neighbor.gridX, neighbor.gridY, 1);else
@@ -95,7 +95,7 @@ while(ds_priority_size(open) > 0)
 				{
 					mir = char.minRangeDamage;
 					mar = char.maxRangeDamage;
-					//if(mir == 1 && mar == 1)checkRange1(neighbor.gridX, neighbor.gridY, 0);else
+					if(mir == 1 && mar == 1)checkRange1(neighbor.gridX, neighbor.gridY, 0);else
 					if(mir == 1 && mar == 2)checkRange1_2(neighbor.gridX, neighbor.gridY, 0);else
 					if(mir == 2 && mar == 2)checkRange2(neighbor.gridX, neighbor.gridY, 0);else
 					if(mir == 2 && mar == 3)checkRange2_3(neighbor.gridX, neighbor.gridY, 0);else
@@ -128,6 +128,7 @@ if(char.canAttack)
 {
 	with(obj_node)
 	{
+		/*
 		if(color == 1 && id != start)
 		{
 			for(var i = 0; i < ds_list_size(neighbors); i ++)
@@ -140,6 +141,7 @@ if(char.canAttack)
 				}
 			}
 		}
+		*/
 	    if(color == 0 && start != id &&(global.tileBinary[gridY] & 1<<gridX))
 	    {
 			color = 2;

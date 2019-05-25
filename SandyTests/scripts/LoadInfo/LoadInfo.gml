@@ -77,12 +77,12 @@ for(var i = 200; i < 200 + global.nCustom; i ++)
 	
 ds_list_clear(global.resourceBox);
 ds_list_clear(global.resourceBoxAm);
-for(var ii = 0; ii < 30; ii ++)
+for(var ii = 0; ii < 60; ii ++)
 {
 	var s1 = buffer_read(buf, buffer_s16);
 	if(s1 != -1)ds_list_add(global.resourceBox, s1);
 }
-for(var ii = 0; ii < 30; ii ++)
+for(var ii = 0; ii < 60; ii ++)
 {
 	var s1 = buffer_read(buf, buffer_s16);
 	if(s1 != -1)ds_list_add(global.resourceBoxAm, s1);
@@ -134,7 +134,7 @@ for(var i = 0; i < 70; i ++)
 	global.CHAR[i, 4] = buffer_read(buf, buffer_u8);
 	global.CHAR[i, 5] = buffer_read(buf, buffer_u8);
 	
-	global.CHAR[i, 6] = buffer_read(buf, buffer_u8);
+	global.CHAR[i, 6] = buffer_read(buf, buffer_u16);
 	global.CHAR[i, 7] = buffer_read(buf, buffer_u8);
 	global.CHAR[i, 8] = buffer_read(buf, buffer_u8);
 	global.CHAR[i, 9] = buffer_read(buf, buffer_u8);
@@ -290,7 +290,7 @@ for(var i = 150; i < 180; i ++)
 	global.CHAR[i, 4] = buffer_read(buf, buffer_u8);
 	global.CHAR[i, 5] = buffer_read(buf, buffer_u8);
 	
-	global.CHAR[i, 6] = buffer_read(buf, buffer_u8);
+	global.CHAR[i, 6] = buffer_read(buf, buffer_u16);
 	global.CHAR[i, 7] = buffer_read(buf, buffer_u8);
 	global.CHAR[i, 8] = buffer_read(buf, buffer_u8);
 	global.CHAR[i, 9] = buffer_read(buf, buffer_u8);

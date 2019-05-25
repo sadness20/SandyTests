@@ -9,3 +9,6 @@ for(var i = 0; i < 5; i ++)
 }
 
 visited = 0;
+
+gridX = floor(x / 32);
+gridY = floor(y / 32);

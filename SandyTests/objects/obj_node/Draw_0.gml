@@ -51,6 +51,11 @@ if(obj_pers.gamestate != "prepmap" && global.transitionCombat <= 0 && obj_game.i
 		if(lessAlpha == true)alpha /= 1.5;
 		draw_sprite_ext(sprite_index, 4, x, y, image_xscale, image_yscale, image_angle, image_blend, alpha);
 	}
+	for(var i = 0; i < ds_list_size(cellEffects); i ++)
+	{
+		var effect = ds_list_find_value(cellEffects, i);
+		draw_sprite_ext(sprite_index, global.CELLEFFECT[effect, 1], x, y, image_xscale, image_yscale, image_angle, image_blend, 0.3);
+	}
 }
 if(obj_pers.gamestate == "prepmap")
 {

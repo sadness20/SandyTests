@@ -54,7 +54,7 @@ if(cuchance < chance)
 							
 		for(var i = 0; i < 74; i ++)
 		{
-			if(i != 33 && i != 34 && i != 49 && i != 50)
+			if(i != 33 && i != 34 && i != 49 && i != 50 && i != 44)
 			{
 				global.CHAR[fillID, i] = global.CHAR[char, i];
 			} else global.CHAR[fillID, i] = ds_list_create();
@@ -84,6 +84,8 @@ if(cuchance < chance)
 		global.CHAR[fillID, 57] = true;
 		global.CHAR[fillID, 58] = true;
 		global.CHAR[fillID, 59] = false;
+		
+		EquipFirstWeaponGlobal(fillID);
 				
 		//PICK NAME
 		var read = "fnames";
@@ -110,6 +112,8 @@ if(cuchance < chance)
 		with obj_pers CharListOrder();
 		//ds_list_add(global.charList, fillID);
 		//show_message(ds_list_size(global.charList));
+		
+		global.nprisoners --;
 	}
 	
 	Dialogue(char, str + "." + choose("", "."));

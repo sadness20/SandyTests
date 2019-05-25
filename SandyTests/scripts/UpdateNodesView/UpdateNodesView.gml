@@ -28,7 +28,7 @@ if(char.faction == 2)targetFaction1 = 1;
 start.color = 1;
 
 var mir = char.minRangeDamage, mar = char.maxRangeDamage;
-//if(mir == 1 && mar == 1)checkRange1(start.gridX, start.gridY, 0);else
+if(mir == 1 && mar == 1)checkRange1(start.gridX, start.gridY, 0);else
 if(mir == 1 && mar == 2)checkRange1_2(start.gridX, start.gridY, 0);else
 if(mir == 2 && mar == 2)checkRange2(start.gridX, start.gridY, 0);else
 if(mir == 2 && mar == 3)checkRange2_3(start.gridX, start.gridY, 0);else
@@ -36,7 +36,7 @@ if(mir == 1 && mar == 3)checkRange1_3(start.gridX, start.gridY, 0);
 
 mir = char.minRangeAlly;
 mar = char.maxRangeAlly;
-//if(mir == 1 && mar == 1)checkRange1(start.gridX, start.gridY, 1);else
+if(mir == 1 && mar == 1)checkRange1(start.gridX, start.gridY, 1);else
 if(mir == 1 && mar == 2)checkRange1_2(start.gridX, start.gridY, 1);else
 if(mir == 2 && mar == 2)checkRange2(start.gridX, start.gridY, 1);else
 if(mir == 2 && mar == 3)checkRange2_3(start.gridX, start.gridY, 1);else
@@ -71,7 +71,7 @@ while(ds_priority_size(open) > 0)
 		var check = 1;
 		if(neighbor.occupant != noone && char.hasSkill[0] == 0 && (neighbor.occupant.faction == targetFaction1 || neighbor.occupant.faction == targetFaction2))check = 0;
 		if(abs(neighbor.level - current.level) > 1)check = 0;
-		if(check && ds_list_find_index(closed, neighbor) < 0 && nCost + current.G <= mp)
+		if(neighbor.passable && check && ds_list_find_index(closed, neighbor) < 0 && nCost + current.G <= mp)
 		{
 			if(ds_priority_find_priority(open, neighbor) == 0 || ds_priority_find_priority(open, neighbor) == undefined)
 			{
@@ -85,7 +85,7 @@ while(ds_priority_size(open) > 0)
 				{
 					mir = char.minRangeAlly;
 					mar = char.maxRangeAlly;
-					//if(mir == 1 && mar == 1)checkRange1(neighbor.gridX, neighbor.gridY, 1);else
+					if(mir == 1 && mar == 1)checkRange1(neighbor.gridX, neighbor.gridY, 1);else
 					if(mir == 1 && mar == 2)checkRange1_2(neighbor.gridX, neighbor.gridY, 1);else
 					if(mir == 2 && mar == 2)checkRange2(neighbor.gridX, neighbor.gridY, 1);else
 					if(mir == 2 && mar == 3)checkRange2_3(neighbor.gridX, neighbor.gridY, 1);else
@@ -95,7 +95,7 @@ while(ds_priority_size(open) > 0)
 				{
 					mir = char.minRangeDamage;
 					mar = char.maxRangeDamage;
-					//if(mir == 1 && mar == 1)checkRange1(neighbor.gridX, neighbor.gridY, 0);else
+					if(mir == 1 && mar == 1)checkRange1(neighbor.gridX, neighbor.gridY, 0);else
 					if(mir == 1 && mar == 2)checkRange1_2(neighbor.gridX, neighbor.gridY, 0);else
 					if(mir == 2 && mar == 2)checkRange2(neighbor.gridX, neighbor.gridY, 0);else
 					if(mir == 2 && mar == 3)checkRange2_3(neighbor.gridX, neighbor.gridY, 0);else
@@ -127,6 +127,7 @@ if(char.canAttack)
 
 	with(obj_node)
 	{
+		/*
 		if(color == 1 && id != start)
 		{
 			for(var i = 0; i < ds_list_size(neighbors); i ++)
@@ -139,6 +140,7 @@ if(char.canAttack)
 				}
 			}
 		}
+		*/
 	    if(color == 0 && start != id &&(global.tileBinary[gridY] & 1<<gridX))
 	    {
 			color = 2;

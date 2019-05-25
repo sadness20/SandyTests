@@ -64,9 +64,16 @@ if(inCombat == 1 && global.showAnimations == true)
 				}
 				if(vis > 0)
 				{
-					if(transformID == -1)DrawUnit(characterID, cindex, index, xpr + cx, ypr + cy + combatvy, xscale * xxscale, yscale, c_white, alpha, faction, 0, combatvy);
-					else DrawUnit(characterID, cindex, index, xpr + cx, ypr + cy + combatvy, xscale, yscale, c_white, alpha, faction, 5, combatvy);
-					
+					if(isGhost == 0)
+					{
+						if(transformID == -1)DrawUnit(characterID, cindex, index, xpr + cx, ypr + cy + combatvy, xscale * xxscale, yscale, c_white, alpha, faction, 0, combatvy);
+						else DrawUnit(characterID, cindex, index, xpr + cx, ypr + cy + combatvy, xscale, yscale, c_white, alpha, faction, 5, combatvy);
+					}
+					else
+					{
+						if(transformID == -1)DrawUnit(characterID, cindex, index, xpr + cx, ypr + cy + combatvy, xscale * xxscale, yscale, c_white, alpha, faction, 6, combatvy);
+						else DrawUnit(characterID, cindex, index, xpr + cx, ypr + cy + combatvy, xscale, yscale, c_white, alpha, faction, 8, combatvy);
+					}
 				}
 			}
 		}
@@ -74,8 +81,16 @@ if(inCombat == 1 && global.showAnimations == true)
 		{
 			if(vis > 0)
 			{
-				if(transformID == -1)DrawUnit(characterID, cindex, index, xpr + cx, ypr + cy + combatvy, xscale, yscale, c_white, alpha, faction, 0, combatvy);
-				else DrawUnit(characterID, cindex, index, xpr + cx, ypr + cy + combatvy, xscale, yscale, c_white, alpha, faction, 5, combatvy);
+				if(isGhost == 0)
+				{
+					if(transformID == -1)DrawUnit(characterID, cindex, index, xpr + cx, ypr + cy + combatvy, xscale, yscale, c_white, alpha, faction, 0, combatvy);
+					else DrawUnit(characterID, cindex, index, xpr + cx, ypr + cy + combatvy, xscale, yscale, c_white, alpha, faction, 5, combatvy);
+				}
+				else
+				{
+					if(transformID == -1)DrawUnit(characterID, cindex, index, xpr + cx, ypr + cy + combatvy, xscale, yscale, c_white, alpha, faction, 6, combatvy);
+					else DrawUnit(characterID, cindex, index, xpr + cx, ypr + cy + combatvy, xscale, yscale, c_white, alpha, faction, 8, combatvy);
+				}
 			}
 		}
 		if(global.char1.xscale >= global.char2.xscale)

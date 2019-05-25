@@ -1179,6 +1179,38 @@ if(global.CHAR[charID, 36] != -1 && filter != 5)
 	    }
 		
 		break;
+		
+	    case 30:
+    
+	    if(cind == 0)
+	    {
+	        if(ind >= cind + 2)
+	        {
+	            faceY = 1;
+	        } else faceY = 0;
+	        faceY ++;
+	    }
+	    if(cind == 20)
+	    {
+			faceX -= 3;
+			faceY ++;
+	    }
+	    if(cind == 4 || cind == 8 || cind == 20)
+	    {
+	        faceY ++;
+	    }
+	    if(cind == 16)
+	    {
+	        faceY ++;
+	    }
+	    if(cind == 12)
+	    {
+	        faceY += 2;
+	    }
+		if(cind == 4)faceX -= 3;
+		if(cind == 8)faceX += 3;
+		
+	    break;
 	}
 	
 	//BACKHAIR
@@ -1433,7 +1465,7 @@ else
 	draw_clear_alpha(c_black, 0);
 	
 	var bodyspr = global.CHAR[charID, 35];
-	if(filter == 5)bodyspr = transformID;
+	if(filter == 5 || filter == 8)bodyspr = transformID;
 
 	if(filter != 1)
 	{
@@ -1461,16 +1493,19 @@ surface_reset_target();
 
 if(xscale < 0)vx += 32 * abs(xscale);
 
-if((filter < 3 || filter >= 5))draw_surface_ext(unitSurface, xpos + vx, ypos + 50 - height + vy + ny, xscale, -yscale * 0.75, 0, c_black, alpha * 0.3);
-if(vis == 2)
+if((filter < 3 || filter == 5))draw_surface_ext(unitSurface, xpos + vx, ypos + 50 - height + vy + ny, xscale, -yscale * 0.75, 0, c_black, alpha * 0.3);
+if(filter != 6 && filter != 7)
 {
-	gpu_set_blendmode(bm_add);
-	draw_surface_ext(unitSurface, xpos + vx, ypos + vy, xscale, yscale, 0, col, alpha);
-	gpu_set_blendmode(bm_normal);
-}
-else
-{
-	draw_surface_ext(unitSurface, xpos + vx, ypos + vy, xscale, yscale, 0, col, alpha);
+	if(vis == 2)
+	{
+		gpu_set_blendmode(bm_add);
+		draw_surface_ext(unitSurface, xpos + vx, ypos + vy, xscale, yscale, 0, col, alpha);
+		gpu_set_blendmode(bm_normal);
+	}
+	else
+	{
+		draw_surface_ext(unitSurface, xpos + vx, ypos + vy, xscale, yscale, 0, col, alpha);
+	}
 }
 
 if(filter == 1 || filter == 2)
@@ -1486,4 +1521,13 @@ if(filter == 4)
 if(filter < 3 && markRange == true && global.transitionCombat <= 0 && obj_game.inCombat == 0 && (global.phase == 0 || obj_pers.gamestate == "prepmap"))
 {
 	draw_surface_ext(unitSurface, xpos + vx, ypos + vy, xscale, yscale, 0, c_red, 1);
+}
+
+if(filter == 6 || filter == 8)
+{
+	draw_surface_ext(unitSurface, xpos + vx, ypos + vy, xscale, yscale, 0, c_black, 0.6);
+}
+if(filter == 7)
+{
+	draw_surface_ext(unitSurface, xpos + vx, ypos + vy, xscale, yscale, 0, c_black, 0.8);
 }

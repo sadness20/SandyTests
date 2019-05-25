@@ -89,7 +89,7 @@ if(global.phase == global.selectedActor.faction && global.phase > 0)
 		if(global.SKILL[skill, 4] == 0 && global.selectedActor.SP > global.SKILL[skill, 3] && global.selectedActor.combatSkill == -1)
 		{
 			global.selectedActor.combatSkill = skill;
-			global.selectedActor.initCombatfx = skill;
+			global.selectedActor.initCombatfx = global.SKILL[skill, 2];
 	
 			global.selectedActor.SP -= global.SKILL[skill, 3];
 			break;
@@ -97,12 +97,12 @@ if(global.phase == global.selectedActor.faction && global.phase > 0)
 		if(global.SKILL[skill, 4] == 2 && global.selectedActor.moved == false && global.selectedActor.SP > global.SKILL[skill, 3] && global.selectedActor.combatSkill == -1)
 		{
 			global.selectedActor.combatSkill = skill;
-			global.selectedActor.initCombatfx = skill;
+			global.selectedActor.initCombatfx = global.SKILL[skill, 2];
 			
 			for(var i = 0; i < 4; i ++)
 			{
-				var subtype = global.SKILL[cs2, 5 + i];
-				var might = global.SKILL[cs2, 12 + i];
+				var subtype = global.SKILL[skill, 5 + i];
+				var might = global.SKILL[skill, 12 + i];
 								
 				switch(subtype)
 				{		
@@ -154,7 +154,7 @@ if(global.skillSelected != -1)
 	global.char1.combatSkill = global.skillSelected;
 	
 	global.char1.SP -= global.SKILL[global.skillSelected, 3];
-	global.char1.initCombatfx = global.skillSelected;
+	global.char1.initCombatfx = global.SKILL[global.skillSelected, 2];
 	
 	global.skillSelected = -1;
 }

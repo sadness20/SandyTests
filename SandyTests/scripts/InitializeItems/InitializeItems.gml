@@ -508,22 +508,22 @@ global.nItems = 15;
 
 global.ITEM[global.nItems, 0] = "Blazing Blade"; //name
 global.ITEM[global.nItems, 1] = 15; //index
-global.ITEM[global.nItems, 2] = 100; //uses
+global.ITEM[global.nItems, 2] = 40; //uses
 global.ITEM[global.nItems, 3] = 2; //type
 global.ITEM[global.nItems, 4] = 10; //subtype
-global.ITEM[global.nItems, 5] = 20000; //worth
+global.ITEM[global.nItems, 5] = 8000; //worth
 global.ITEM[global.nItems, 6] = 8; //damage fx
 global.ITEM[global.nItems, 7] = 1; //minrange;
 global.ITEM[global.nItems, 8] = 1; //maxrange;
 global.ITEM[global.nItems, 9] = 0; //animationType
 global.ITEM[global.nItems, 10] = 15; //might
-global.ITEM[global.nItems, 11] = 100; //hit
+global.ITEM[global.nItems, 11] = 90; //hit
 global.ITEM[global.nItems, 12] = 30; //crit
-global.ITEM[global.nItems, 13] = 30; //avoid
+global.ITEM[global.nItems, 13] = 0; //avoid
 global.ITEM[global.nItems, 14] = 0; //damagetype
 global.ITEM[global.nItems, 15] = 0; //animation subtype
 global.ITEM[global.nItems, 16] = -1; //object creation
-global.ITEM[global.nItems, 17] = "the best sword."; //description
+global.ITEM[global.nItems, 17] = "Crazy sword."; //description
 global.ITEM[global.nItems, 18] = 1; //effectiveness 1
 global.ITEM[global.nItems, 19] = -1; //effectiveness 2
 global.ITEM[global.nItems, 20] = 4; //item rank
@@ -2635,6 +2635,7 @@ global.ITEM[global.nItems, 5] = 750; //worth
 global.ITEM[global.nItems, 17] = "Used in enchanting."; //description
 global.ITEM[global.nItems, 22] = 28; //skill ID
 
+
 global.nItems = 94;
 
 global.ITEM[global.nItems, 0] = "Shatter Rune"; //name
@@ -2825,6 +2826,184 @@ global.ITEM[global.nItems, 14] = 0; //damagetype
 global.ITEM[global.nItems, 15] = 0; //animation subtype
 global.ITEM[global.nItems, 16] = -1; //object creation
 global.ITEM[global.nItems, 17] = "Opens doors and chests."; //description
+global.ITEM[global.nItems, 18] = -1; //effectiveness 1
+global.ITEM[global.nItems, 19] = -1; //effectiveness 2
+global.ITEM[global.nItems, 20] = -1; //item rank
+global.ITEM[global.nItems, 21] = 0; //CUSTOM 1 -- particle type
+
+global.nItems = 105;
+
+global.ITEM[global.nItems, 0] = "Sword of Eons"; //name
+global.ITEM[global.nItems, 1] = 145; //index
+global.ITEM[global.nItems, 2] = 50; //uses
+global.ITEM[global.nItems, 3] = 2; //type
+global.ITEM[global.nItems, 4] = 10; //subtype
+global.ITEM[global.nItems, 5] = 50000; //worth
+global.ITEM[global.nItems, 6] = 1; //damage fx
+global.ITEM[global.nItems, 7] = 1; //minrange;
+global.ITEM[global.nItems, 8] = 1; //maxrange;
+global.ITEM[global.nItems, 9] = 0; //animationType
+global.ITEM[global.nItems, 10] = 20; //might
+global.ITEM[global.nItems, 11] = 85; //hit
+global.ITEM[global.nItems, 12] = 0; //crit
+global.ITEM[global.nItems, 13] = 0; //avoid
+global.ITEM[global.nItems, 14] = 0; //damagetype
+global.ITEM[global.nItems, 15] = 0; //animation subtype
+global.ITEM[global.nItems, 16] = -1; //object creation
+global.ITEM[global.nItems, 17] = "Unknown origin."; //description
+global.ITEM[global.nItems, 18] = 4; //effectiveness 1
+global.ITEM[global.nItems, 19] = -1; //effectiveness 2
+global.ITEM[global.nItems, 20] = 5; //item rank
+global.ITEM[global.nItems, 21] = 0; //CUSTOM 1 -- particle type
+global.ITEM[global.nItems, 22] = 26;
+
+global.ITEM[global.nItems, 23] = 40; //base resource 1
+global.ITEM[global.nItems, 24] = -1; //base resource 2
+global.ITEM[global.nItems, 25] = -1; //modifier 1
+global.ITEM[global.nItems, 26] = -1; //modifier 2
+global.ITEM[global.nItems, 27] = -1; //special
+
+global.ITEM[global.nItems, 32] = 1; //hits per turn
+global.ITEM[global.nItems, 33] = 50; //skill value
+
+global.nItems = 106;
+
+global.ITEM[global.nItems, 0] = "Thunderbolt"; //name
+global.ITEM[global.nItems, 1] = 121; //index
+global.ITEM[global.nItems, 2] = 50; //uses
+global.ITEM[global.nItems, 3] = 2; //type
+global.ITEM[global.nItems, 4] = 17; //subtype
+global.ITEM[global.nItems, 5] = 10000; //worth
+global.ITEM[global.nItems, 6] = 2; //damage fx
+global.ITEM[global.nItems, 7] = 2; //minrange;
+global.ITEM[global.nItems, 8] = 3; //maxrange;
+global.ITEM[global.nItems, 9] = 10; //animationType
+global.ITEM[global.nItems, 10] = 12; //might
+global.ITEM[global.nItems, 11] = 80; //hit
+global.ITEM[global.nItems, 12] = 0; //crit
+global.ITEM[global.nItems, 13] = 0; //avoid
+global.ITEM[global.nItems, 14] = 1; //damagetype
+global.ITEM[global.nItems, 15] = 15; //animation subtype
+global.ITEM[global.nItems, 16] = obj_electrify; //object creation
+global.ITEM[global.nItems, 17] = "Ancient thunder magic."; //description
+global.ITEM[global.nItems, 18] = -1; //effectiveness 1
+global.ITEM[global.nItems, 19] = -1; //effectiveness 2
+global.ITEM[global.nItems, 20] = 3; //item rank
+global.ITEM[global.nItems, 21] = 5; //CUSTOM 1 -- particle type
+
+global.ITEM[global.nItems, 23] = 55; //base resource 1
+global.ITEM[global.nItems, 24] = -1; //base resource 2
+global.ITEM[global.nItems, 25] = -1; //modifier 1
+global.ITEM[global.nItems, 26] = -1; //modifier 2
+global.ITEM[global.nItems, 27] = -1; //special
+
+global.ITEM[global.nItems, 28] = 4; //base resource 1 amount
+global.ITEM[global.nItems, 29] = 1; //base resource 2 amount
+
+global.nItems = 107;
+
+global.ITEM[global.nItems, 0] = "Shadow Surge"; //name
+global.ITEM[global.nItems, 1] = 112; //index
+global.ITEM[global.nItems, 2] = 50; //uses
+global.ITEM[global.nItems, 3] = 2; //type
+global.ITEM[global.nItems, 4] = 16; //subtype
+global.ITEM[global.nItems, 5] = 10000; //worth
+global.ITEM[global.nItems, 6] = 0; //damage fx
+global.ITEM[global.nItems, 7] = 1; //minrange;
+global.ITEM[global.nItems, 8] = 2; //maxrange;
+global.ITEM[global.nItems, 9] = 10; //animationType
+global.ITEM[global.nItems, 10] = 14; //might
+global.ITEM[global.nItems, 11] = 80; //hit
+global.ITEM[global.nItems, 12] = 0; //crit
+global.ITEM[global.nItems, 13] = 0; //avoid
+global.ITEM[global.nItems, 14] = 1; //damagetype
+global.ITEM[global.nItems, 15] = 13; //animation subtype
+global.ITEM[global.nItems, 16] = obj_explosionMagic; //object creation
+global.ITEM[global.nItems, 17] = "Powerful dark magic."; //description
+global.ITEM[global.nItems, 18] = -1; //effectiveness 1
+global.ITEM[global.nItems, 19] = -1; //effectiveness 2
+global.ITEM[global.nItems, 20] = 4; //item rank
+global.ITEM[global.nItems, 21] = 3; //CUSTOM 1 -- particle type
+
+global.ITEM[global.nItems, 23] = 58; //base resource 1
+global.ITEM[global.nItems, 24] = -1; //base resource 2
+global.ITEM[global.nItems, 25] = -1; //modifier 1
+global.ITEM[global.nItems, 26] = -1; //modifier 2
+global.ITEM[global.nItems, 27] = -1; //special
+	
+global.ITEM[global.nItems, 28] = 5; //base resource 1 amount
+global.ITEM[global.nItems, 29] = 2; //base resource 2 amount
+
+global.nItems = 108;
+
+global.ITEM[global.nItems, 0] = "HP Tonic"; //name
+global.ITEM[global.nItems, 1] = 146; //index
+global.ITEM[global.nItems, 2] = 1; //uses
+global.ITEM[global.nItems, 3] = 0; //type
+global.ITEM[global.nItems, 4] = 1; //subtype
+global.ITEM[global.nItems, 5] = 150; //worth
+global.ITEM[global.nItems, 6] = -1; //damage fx
+global.ITEM[global.nItems, 7] = 0; //minrange;
+global.ITEM[global.nItems, 8] = 0; //maxrange;
+global.ITEM[global.nItems, 9] = 0; //animationType
+global.ITEM[global.nItems, 10] = 5; //might
+global.ITEM[global.nItems, 11] = 0; //hit
+global.ITEM[global.nItems, 12] = 0; //crit
+global.ITEM[global.nItems, 13] = 0; //avoid
+global.ITEM[global.nItems, 14] = 0; //damagetype
+global.ITEM[global.nItems, 15] = 0; //animation subtype
+global.ITEM[global.nItems, 16] = -1; //object creation
+global.ITEM[global.nItems, 17] = "+5 maximum HP for the duration of one chapter."; //description
+global.ITEM[global.nItems, 18] = -1; //effectiveness 1
+global.ITEM[global.nItems, 19] = -1; //effectiveness 2
+global.ITEM[global.nItems, 20] = -1; //item rank
+global.ITEM[global.nItems, 21] = 0; //CUSTOM 1 -- particle type
+
+global.nItems = 109;
+
+global.ITEM[global.nItems, 0] = "Strength Tonic"; //name
+global.ITEM[global.nItems, 1] = 147; //index
+global.ITEM[global.nItems, 2] = 1; //uses
+global.ITEM[global.nItems, 3] = 0; //type
+global.ITEM[global.nItems, 4] = 2; //subtype
+global.ITEM[global.nItems, 5] = 150; //worth
+global.ITEM[global.nItems, 6] = -1; //damage fx
+global.ITEM[global.nItems, 7] = 0; //minrange;
+global.ITEM[global.nItems, 8] = 0; //maxrange;
+global.ITEM[global.nItems, 9] = 0; //animationType
+global.ITEM[global.nItems, 10] = 2; //might
+global.ITEM[global.nItems, 11] = 0; //hit
+global.ITEM[global.nItems, 12] = 0; //crit
+global.ITEM[global.nItems, 13] = 0; //avoid
+global.ITEM[global.nItems, 14] = 0; //damagetype
+global.ITEM[global.nItems, 15] = 0; //animation subtype
+global.ITEM[global.nItems, 16] = -1; //object creation
+global.ITEM[global.nItems, 17] = "+2 maximum STR for the duration of one chapter."; //description
+global.ITEM[global.nItems, 18] = -1; //effectiveness 1
+global.ITEM[global.nItems, 19] = -1; //effectiveness 2
+global.ITEM[global.nItems, 20] = -1; //item rank
+global.ITEM[global.nItems, 21] = 0; //CUSTOM 1 -- particle type
+
+global.nItems = 110;
+
+global.ITEM[global.nItems, 0] = "Arms Scroll"; //name
+global.ITEM[global.nItems, 1] = 148; //index
+global.ITEM[global.nItems, 2] = 1; //uses
+global.ITEM[global.nItems, 3] = 3; //type
+global.ITEM[global.nItems, 4] = 4; //subtype
+global.ITEM[global.nItems, 5] = 2500; //worth
+global.ITEM[global.nItems, 6] = -1; //damage fx
+global.ITEM[global.nItems, 7] = 0; //minrange;
+global.ITEM[global.nItems, 8] = 0; //maxrange;
+global.ITEM[global.nItems, 9] = 0; //animationType
+global.ITEM[global.nItems, 10] = 1; //might
+global.ITEM[global.nItems, 11] = 0; //hit
+global.ITEM[global.nItems, 12] = 0; //crit
+global.ITEM[global.nItems, 13] = 0; //avoid
+global.ITEM[global.nItems, 14] = 0; //damagetype
+global.ITEM[global.nItems, 15] = 0; //animation subtype
+global.ITEM[global.nItems, 16] = -1; //object creation
+global.ITEM[global.nItems, 17] = "Increases the weapon level of all weapons that its user can possibly equip by 1 rank."; //description
 global.ITEM[global.nItems, 18] = -1; //effectiveness 1
 global.ITEM[global.nItems, 19] = -1; //effectiveness 2
 global.ITEM[global.nItems, 20] = -1; //item rank

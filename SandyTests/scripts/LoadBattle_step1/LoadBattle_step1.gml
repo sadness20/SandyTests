@@ -94,16 +94,74 @@ if(file_exists(file))
 		}
 	}
 	
+	var nSpawns = buffer_read(buf, buffer_u8);
+	for(var i = 0; i < nSpawns; i ++)
+	{
+		var charID = buffer_read(buf, buffer_u8);
+		var xpos = buffer_read(buf, buffer_u8);
+		var ypos = buffer_read(buf, buffer_u8);
+		with(obj_spawnTurn)
+		{
+			if(gridX == xpos && gridY == ypos)
+			{
+				characterID = charID;
+			}
+		}
+	}
 	
+	var nChests = buffer_read(buf, buffer_u8);
+	for(var i = 0; i < nChests; i ++)
+	{
+		var xpos = buffer_read(buf, buffer_u8);
+		var ypos = buffer_read(buf, buffer_u8);
+		
+		var ssceneID = buffer_read(buf, buffer_s16);
+		var oopened = buffer_read(buf, buffer_u8);
+		
+		with(obj_chestMarker)
+		{
+			if(gridX == xpos && gridY == ypos)
+			{
+				sceneID = ssceneID;
+				opened = oopened;
+				for(var i = 0; i < 5; i ++)
+				{
+					itemReward[i] = buffer_read(buf, buffer_s16);
+				}
+				if(opened)
+				{
+					alarm[0] = 1;
+				}
+			}
+		}
+	}
+	var nHouses = buffer_read(buf, buffer_u8);
+	for(var i = 0; i < nHouses; i ++)
+	{
+		var xpos = buffer_read(buf, buffer_u8);
+		var ypos = buffer_read(buf, buffer_u8);
+		
+		var ssceneID = buffer_read(buf, buffer_s16);
+		var vvisited = buffer_read(buf, buffer_u8);
+		
+		with(obj_houseMarker)
+		{
+			if(gridX == xpos && gridY == ypos)
+			{
+				sceneID = ssceneID;
+				visited = vvisited;
+				for(var i = 0; i < 5; i ++)
+				{
+					itemReward[i] = buffer_read(buf, buffer_s16);
+				}
+			}
+		}
+	}
 	
 	global.nSpawns = buffer_read(buf, buffer_u8);
-	global.oldZoom = buffer_read(buf, buffer_u8);
 	global.nTurn = buffer_read(buf, buffer_u8);
 	global.activeCharacters = buffer_read(buf, buffer_u8);
 	global.currentTurn = buffer_read(buf, buffer_u8);
-	
-	global.zoom = buffer_read(buf, buffer_u8);
-	global.targetZoom = global.zoom;
 	
 	//global.rangeToggle = buffer_read(buf, buffer_bool);
 	//global.enemyUpdated = buffer_read(buf, buffer_bool);

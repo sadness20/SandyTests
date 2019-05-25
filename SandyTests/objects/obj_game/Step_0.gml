@@ -285,6 +285,7 @@ if((global.phase == 0 && state == "game") || obj_pers.gamestate == "prepmap")
 		{
 			if((mouse_wheel_down() && global.controlsType == 0) || global.Xkey_state == 1)
 			{
+				//SwitchAllWeapons1(global.selectedActor, global.cellAttack, global.target);
 				SwitchAllWeapons1(global.selectedActor, global.cellAttack, global.target);
 				arrowSelect1 = 2;
 				alarm[3] = 5;
@@ -292,6 +293,7 @@ if((global.phase == 0 && state == "game") || obj_pers.gamestate == "prepmap")
 			if((mouse_wheel_up() && global.controlsType == 0)|| global.Ykey_state == 1)
 			{
 				SwitchAllWeapons(global.selectedActor, global.cellAttack, global.target);
+				//SwitchAllWeapons(global.selectedActor, global.cellAttack, global.target);
 				arrowSelect2 = 2;
 				alarm[4] = 5;
 			}
@@ -695,7 +697,7 @@ switch(state)
 			if(LD <= -2)xpg = floor(max(26 + LD * 3, 7));
 			xpg = floor(xpg * global.char2.xpmult);
 		}
-		xpg = floor(xpg * 2);
+		xpg = floor(xpg * 2.3);
 		for(var i = 0; i < ds_list_size(global.CHAR[global.char1.characterID, 34]); i ++)
 		{
 			var skillID = ds_list_find_value(global.CHAR[global.char1.characterID, 34], i);
@@ -805,12 +807,6 @@ switch(state)
 					global.CHAR[global.charlevelup.characterID, 4] ++;
 					global.charlevelup.levelup = 1;
 					global.CHAR[global.charlevelup.characterID, 5] = 0;
-					if(global.CHAR[global.charlevelup.characterID, 4] mod 10 == 0)
-					{
-						global.CHAR[global.charlevelup.characterID, 32] ++;
-						global.charlevelup.MP ++;
-						global.charlevelup.MAXMP ++;
-					}
 					
 					//GAINSKILL
 					if(global.CHAR[global.charlevelup.characterID, 4] mod 5 == 0)
@@ -828,7 +824,7 @@ switch(state)
 									hasSkill = 1;
 								}
 							}
-							if(hasSkill == 0 && i != 10 && i != 17 && i != 22 && global.CHAR[charID, 70] >= global.SKILL[i, 3])ds_list_add(availableSkills, i);
+							if(hasSkill == 0 && i != 10 && i != 17 && global.CHAR[charID, 70] >= global.SKILL[i, 3])ds_list_add(availableSkills, i);
 						}
 						
 						for(var i = 33; i < 37; i ++)
@@ -841,7 +837,19 @@ switch(state)
 									hasSkill = 1;
 								}
 							}
-							if(hasSkill == 0 && i != 35 && global.CHAR[charID, 70] >= global.SKILL[i, 3])ds_list_add(availableSkills, i);
+							if(hasSkill == 0 && i != 35 && i != 34 && global.CHAR[charID, 70] >= global.SKILL[i, 3])ds_list_add(availableSkills, i);
+						}
+						for(var i = 42; i < 43; i ++)
+						{
+							var hasSkill = 0;
+							for(var ii = 0; ii < ds_list_size(global.CHAR[charID, 33]); ii ++)
+							{
+								if(ds_list_find_value(global.CHAR[charID, 33], ii) == i)
+								{
+									hasSkill = 1;
+								}
+							}
+							if(hasSkill == 0 && global.CHAR[charID, 70] >= global.SKILL[i, 3])ds_list_add(availableSkills, i);
 						}
 					
 						ds_list_shuffle(availableSkills);
@@ -951,7 +959,6 @@ switch(state)
 			
 			with(obj_unit)
 			{
-				combatSkill = -1;
 				if(state == "dead")
 				{
 					if(captured)
@@ -985,16 +992,8 @@ switch(state)
 								var skill = ds_list_find_value(global.CHAR[characterID, 34], ii);
 								ds_list_add(global.CHAR[fillID, 34], skill);
 							}
-							for(var ii = 0; ii < ds_list_size(global.CHAR[characterID, 49]); ii ++)
-							{
-								var skill = ds_list_find_value(global.CHAR[characterID, 49], ii);
-								ds_list_add(global.CHAR[fillID, 49], skill);
-							}
-							for(var ii = 0; ii < ds_list_size(global.CHAR[characterID, 50]); ii ++)
-							{
-								var skill = ds_list_find_value(global.CHAR[characterID, 50], ii);
-								ds_list_add(global.CHAR[fillID, 50], skill);
-							}
+							ds_list_add(global.CHAR[fillID, 49], ds_list_find_value(global.CHAR[characterID, 49], 0));
+							ds_list_add(global.CHAR[fillID, 50], ds_list_find_value(global.CHAR[characterID, 50], 0));
 							
 							global.CHAR[fillID, 40] = median(5, 100 - (30 + (isBoss * 20) + min(global.CHAR[characterID, 4] * 2.5, 70)), 100);
 							//if(global.CHAR[fillID, 40] == 1)global.CHAR[fillID, 40] = 2;
@@ -1208,12 +1207,46 @@ switch(state)
 				//buzzer beater
 				if(skill == 23)
 				{
-					if(whoDied == 1 && global.char1.HP <= floor(global.char1.MAXHP * (global.SKILL[skill, 12] / 100)))
+					if(global.char1 == global.selectedActor && whoDied == 1 && global.char1.HP <= floor(global.char1.MAXHP * (global.SKILL[skill, 12] / 100)))
 					{
 						global.char1.endturnType = 1;
 					}
 				}
+				if(skill == 42)
+				{
+					if(global.char1 == global.selectedActor && whoDied == 1 && global.selectedActor.canGaleforce == 1)
+					{
+						global.selectedActor.endturnType = 2;
+						global.selectedActor.canGaleforce = 0;
+					}
+				}
 			}
+			if(global.selectedActor != noone && instance_exists(global.selectedActor) && global.phase == global.selectedActor.faction && global.selectedActor.combatSkill != -1 && global.SKILL[global.selectedActor.combatSkill, 4] == 13)
+			{
+				var ch1node = global.char1.standingNode;
+		
+				UpdatePosition(global.char1, global.char2.standingNode);
+				UpdatePosition(global.char2, ch1node);
+		
+				if(!(global.phase == 1 && global.optionState[7] == 1))
+				{
+					audio_play_sound(sfx_transpose, 0, 0);
+		
+					var spfx = instance_create_depth(global.char1.x + 16, global.char1.y + 8, -7000, obj_combatFX2);
+					spfx.sprite_index = spr_transpose;
+					spfx.xscale = 50;
+					spfx.yscale = 50;
+		
+					var spfx = instance_create_depth(global.char2.x + 16, global.char2.y + 8, -7000, obj_combatFX2);
+					spfx.sprite_index = spr_transpose;
+					spfx.xscale = 50;
+					spfx.yscale = 50;
+				}
+			}
+		}
+		with(obj_unit)
+		{
+			combatSkill = -1;
 		}
 		
 	
@@ -1374,7 +1407,7 @@ switch(state)
 			obj_pers.tempVar6 = 0;
 			state = "endgame";
 			gamestate = "win";
-			with obj_musPlayer event_user(2);
+			with obj_musPlayer event_user(6);
 			ov = true;
 			exit;
 			//CleanMarked();
@@ -1384,7 +1417,7 @@ switch(state)
 			obj_pers.tempVar6 = 0;
 			state = "endgame";
 			gamestate = "lose";
-			with obj_musPlayer event_user(2);
+			with obj_musPlayer event_user(6);
 			ov = true;
 			exit;
 			//CleanMarked();
@@ -1401,8 +1434,20 @@ switch(state)
 			if(global.selectedActor.endturnType == 0)EndTurn(global.selectedActor);
 			if(global.selectedActor.endturnType == 1)
 			{
+				global.selectedActor.endturnType = 0;
 				global.selectedActor.MP = global.selectedActor.MAXMP;
 				global.selectedActor.canAttack = 0;
+				audio_play_sound(sfx_transpose, 0, 0);
+		
+				var spfx = instance_create_depth(global.selectedActor.x + 16, global.selectedActor.y + 8, -7000, obj_combatFX2);
+				spfx.sprite_index = spr_transpose;
+				spfx.xscale = 50;
+				spfx.yscale = 50;
+			}
+			if(global.selectedActor.endturnType == 2)
+			{
+				global.selectedActor.endturnType = 0;
+				global.selectedActor.MP = global.selectedActor.MAXMP;
 				audio_play_sound(sfx_transpose, 0, 0);
 		
 				var spfx = instance_create_depth(global.selectedActor.x + 16, global.selectedActor.y + 8, -7000, obj_combatFX2);
@@ -1790,7 +1835,7 @@ switch(state)
 	case "endgame2":
 	
 	
-	if(global.currentMap == 4)global.gamelevel += 15; else if(global.currentMap == 6) global.gamelevel += 8; else global.gamelevel += 12;
+	if(global.currentMap == 5)global.gamelevel += 18; else if(global.currentMap == 4)global.gamelevel += 15; else if(global.currentMap == 6) global.gamelevel += 8; else global.gamelevel += 12;
 	if(gamestate == "win")
 	{
 		instance_create_depth(0, 0, 0, obj_stageComplete);
@@ -1813,6 +1858,7 @@ switch(state)
 		state = "endgamelose";
 		gamestate = "endgamelose";
 		obj_pers.gamestate = "endgamelose";
+		obj_pers.tempVar7 = 0;
 	}
 	
 	break;
@@ -2080,18 +2126,20 @@ switch(gamestate)
 		else
 		{
 			origin.equipAfter = global.CHAR[origin.characterID, 56];
-			for(var i = 0; i < 5; i ++)
+			origin.lastWeapon = -1;
+			for(var i = 0; i < ds_list_size(global.CHAR[origin.characterID, 49]); i ++)
 			{
-				var item = ds_list_find_value(global.CHAR[origin.characterID, 49], i);
-				if(global.ITEM[item, 14] < 2)
+				var wep = ds_list_find_value(global.CHAR[origin.characterID, 49], i);
+				if(global.ITEM[wep, 14] < 2 && CanUse(origin.characterID, wep))
 				{
-					origin.lastWeapon = i;
+					origin.equipAfter = global.CHAR[origin.characterID, 56];
 					Equip(origin, i);
 					ChangeGameState("ainew_priority");
-					break;
+					exit;
 				}
 			}
 		}
+		ChangeGameState("ainew_searchally");
 	}
 	break;	
 	case "ainew_priority":
@@ -2117,7 +2165,7 @@ switch(gamestate)
 		UpdateNodes(origin.standingNode, origin);
 		for(var i = 0; i < ds_list_size(targetList); i ++)
 		{
-			var tscore = 50;
+			var tscore = 500;
 			var tar = ds_list_find_value(targetList, i);
 			
 			if(tar.standingNode.color == 2)
@@ -2133,7 +2181,7 @@ switch(gamestate)
 					if(origin.HP <= tar.ATKd && origin.SPD > tar.SPD + 4) totalDamage -= origin.ATKd;
 				}
 				
-				if(totalDamage <= 0)tscore -= 500;
+				if(totalDamage <= 0)tscore -= 2500;
 				if(origin.SPD > tar.SPD + 4)totalDamage += origin.ATKd;
 				tscore += totalDamage * 5;
 				
@@ -2141,7 +2189,7 @@ switch(gamestate)
 				for(var b = 0; b < 5; b ++)
 				{
 					var item = ds_list_find_value(global.CHAR[tar.characterID, 49], b);
-					if(global.ITEM[item, 4] >= 10 && global.ITEM[item, 4] != 18)
+					if(item != undefined && global.ITEM[item, 4] >= 10 && global.ITEM[item, 4] != 18)
 					{
 						pscore = 1;
 						break;
@@ -2197,7 +2245,7 @@ switch(gamestate)
 						}
 					}
 					if(dis >= tar.minRange && dis <= tar.maxRange)scoree -= 25;
-					if(scoree > other.bestS && dis >= origin.minRange && dis <= origin.maxRange)
+					if(scoree > other.bestS && dis >= origin.minRangeDamage && dis <= origin.maxRangeDamage)
 					{
 						if(!(dis <= 1 && abs(level - tarNode.level) >= 2))
 						{
@@ -2209,6 +2257,22 @@ switch(gamestate)
 			}
 			if(closestNode != -1)
 			{
+
+				origin.equipAfter = -1;
+				var lastwepscore = 0;
+				for(var i = 0; i < ds_list_size(global.CHAR[origin.characterID, 49]); i ++)
+				{
+					var wep = ds_list_find_value(global.CHAR[origin.characterID, 49], i);
+					var wepscore = global.ITEM[wep, 10];
+					if(CheckRange_weapon(closestNode, tar, wep, 1) == 0)wepscore = -1;
+					if(wepscore > lastwepscore && global.ITEM[wep, 14] < 2 && CanUse(origin.characterID, wep))
+					{
+						lastwepscore = wepscore;
+						Equip(origin, i);
+						break;
+					}
+				}
+				
 				//numbers advantage
 				var numbers = ds_list_size(myList);
 				if(closestNode.marked <= floor(numbers / 2))origin.sacrifice = true;
@@ -2220,25 +2284,22 @@ switch(gamestate)
 				if(tar.HP > origin.ATKd && cbdis >= tar.minRange && cbdis <= tar.maxRange)totalDamage += tar.ATKd;
 				if(tar.SPD > origin.SPD + 4 && tar.HP > origin.ATKd && cbdis >= tar.minRange && cbdis <= tar.maxRange)totalDamage += tar.ATKd;
 				
-				if(origin.HP > totalDamage || origin.sacrifice == true)
-				{
-					origin.cTarget = tar;
-					origin.cNode = closestNode;
+				origin.cTarget = tar;
+				origin.cNode = closestNode;
 								
-					if(origin.cNode != origin.standingNode)
-					{
-						global.pathArray[0] = origin.standingNode;
-						redrawPath(origin.cNode, origin);
-						BeginPath();
-						if(origin.sacrifice == false)ChangeGameState("ainew_safeattack"); else ChangeGameState("ainew_sacrifice");
-						exit;
-					}
-					else
-					{
-						BeginCombat(origin.cTarget, origin);
-						if(origin.sacrifice == false)ChangeGameState("ainew_safeattack"); else ChangeGameState("ainew_sacrifice");
-						exit;
-					}
+				if(origin.cNode != origin.standingNode)
+				{
+					global.pathArray[0] = origin.standingNode;
+					redrawPath(origin.cNode, origin);
+					BeginPath();
+					if(origin.sacrifice == false)ChangeGameState("ainew_safeattack"); else ChangeGameState("ainew_sacrifice");
+					exit;
+				}
+				else
+				{
+					BeginCombat(origin.cTarget, origin);
+					if(origin.sacrifice == false)ChangeGameState("ainew_safeattack"); else ChangeGameState("ainew_sacrifice");
+					exit;
 				}
 			}
 		}
@@ -2413,6 +2474,8 @@ switch(gamestate)
 		var allytohelp = -1;
 		var allyscore = 0;
 		
+		//show_message("");
+		
 		UpdateNodesInfinite(origin.standingNode, origin);
 		
 		with(obj_unit)
@@ -2428,6 +2491,7 @@ switch(gamestate)
 					{
 						scoree = 2000;
 						scoree -= dis * 10;
+						scoree += standingNode.marked * 100;
 						if(scoree > allyscore)
 						{
 							allytohelp = id;
@@ -2486,6 +2550,7 @@ switch(gamestate)
 				}
 			}
 		}
+		//show_message("");
 		ChangeGameState("ainew_searchsafe"); //nothing to do
 		
 	}
@@ -2871,6 +2936,8 @@ switch(gamestate)
 					var check = 0;
 					if(allyenemy == 2 && targetDis >= global.selectedActor.minRangeDamage && targetDis <= global.selectedActor.maxRangeDamage && targetDis >= global.selectedActor.minRange && targetDis <= global.selectedActor.maxRange)check = 1;
 					if(allyenemy == 1 && targetDis >= global.selectedActor.maxRangeAlly && targetDis <= global.selectedActor.maxRangeAlly && targetDis >= global.selectedActor.minRange && targetDis <= global.selectedActor.maxRange)check = 1;
+					if(allyenemy == 2 && global.selectedActor.weaponType >= 2)check = 0;
+					if(allyenemy == 1 && global.selectedActor.weaponType < 2)check = 0;
 					if(!check)
 					{
 						SwitchWeapon(global.selectedActor, global.target.occupant, global.cellAttack, allyenemy);
@@ -2902,6 +2969,9 @@ switch(gamestate)
 						MoveEquipTop(global.selectedActor.characterID);
 					}
 					*/
+					
+					if(allyenemy == 2)UpdateWeaponSkill();
+					if(allyenemy == 1)UpdateWeaponHeal();
 					
 					UpdateStatsCompare(global.selectedActor, global.target.occupant);
 					
@@ -3302,6 +3372,138 @@ switch(gamestate)
 		gamestate = "dropping";
 	}
 	break;
+	case "chooseaugment":
+	
+	var inventory = global.CHAR[global.selectedActor.characterID, 49];
+	var uses = global.CHAR[global.selectedActor.characterID, 50];
+	if(global.opSelect != -1)
+	{
+		var item = ds_list_find_value(inventory, global.opSelect);
+		if(item != -1 && item != undefined)
+		{
+			draw_set_font(ft_large);
+			if(guiTimer2 >= 90)
+			{
+				var txt = DescriptionString(item);
+					
+				xScroll -= 2;
+				if(xScroll < - 48 - string_width(txt))xScroll = -2;
+			} else guiTimer2 ++;
+		}
+	}
+	if(global.itemOptions == 0)
+	{
+		if(opSize2 > 0)opSize2 -= 1 / 4;
+		if(opSize2 < 0)opSize2 = 0;
+		var opY = 72;
+	
+		var cell = global.target;
+			
+		//if(weaponPreview == -1 && global.CHAR[global.selectedActor, 44] != -1)weaponPreview = global.CHAR[global.selectedActor, 44];
+		
+		if(global.controlsType > 0)
+		{
+			if(global.upKey_state == 1)
+			{
+				if(global.opSelect > 0) global.opSelect --; else global.opSelect = ds_list_size(inventory) - 1;
+				audio_play_sound(sfx_scroll, 0, 0);
+				guiTimer2 = 0;
+				xScroll = 0;
+			}
+			if(global.downKey_state == 1)
+			{
+				if(global.opSelect < ds_list_size(inventory) - 1)global.opSelect ++; else global.opSelect = 0;
+				//UpdateStats(global.selectedActor);
+				audio_play_sound(sfx_scroll, 0, 0);
+				guiTimer2 = 0;
+				xScroll = 0;
+			}
+		}
+			
+		for(var i = 0; i < ds_list_size(inventory); i ++)
+		{
+			var item = ds_list_find_value(inventory, i);
+			var xx = 38 - (1 - opSize2) * 34;
+			if(global.controlsType == 0 && global.opSelect != i && global.mxv > xx + 24 && global.mxv < xx + 182 && global.myv > opY + i * 19 && global.myv < opY + i * 19 + 19)
+			{
+				global.opSelect = i;
+				audio_play_sound(sfx_scroll, 0, 0);
+			}
+			if(global.opSelect == i)
+			{
+					if(global.Akey_state == 1)
+					{
+						if(weaponinrange[global.opSelect])
+						{
+							Equip(global.selectedActor, global.opSelect);
+							
+							global.opSelect = 0;
+							global.opSelect2 = 0;
+						
+							gamestate = "select target";
+							if(global.ITEM[global.CHAR[global.selectedActor.characterID, 44], 14] < 2)
+							{
+								targetLis = 2;
+								allyenemy = 2;
+							}
+							else
+							{
+								targetLis = 1;
+								allyenemy = 1;
+							}
+						
+							audio_play_sound(sfx_select, 0, 0);
+		
+							AttackableCells(global.selectedActor.standingNode, global.selectedActor);
+							MarkRed(global.selectedActor);
+						
+							opSize2 = 1;
+			
+							global.showOptions = 3;
+							exit;
+						}
+						else audio_play_sound(sfx_error, 0, 0);
+					}
+			}
+		}
+		if(global.Bkey_state == 1)
+		{
+			if(global.skillSelected == -1)
+			{
+				audio_play_sound(sfx_back, 0, 0);
+				global.opSelect = 0;
+				global.opSelect2 = 0;
+				opSize4 = 1;
+				opSize = 1;
+				opSize2 = 1;
+				opSize3 = 1;
+			
+				global.showOptions = 1;
+				//UpdateWeaponSkill();
+				//if(global.controlsType == 0)window_mouse_set(520 * global.ww, (240 - ((global.nOptions - 1) * 19)) * global.hh);
+			
+				global.target = noone;
+				gamestate = "action";
+			}
+			else
+			{
+				audio_play_sound(sfx_back, 0, 0);
+				//backskill
+				global.showOptions = 9;
+					
+				guiTimer2 = 0;
+				global.opSelect = lastOp;
+				gamestate = "chooseskills";
+				//if(global.controlsType == 0)window_mouse_set(100 * global.ww, 160 * global.hh);
+				global.skillSelected = -1;
+				guiTimer2 = 0;
+				xScroll = 0;
+			}
+			
+			exit;
+		}
+	}
+	break;
 	case "trading":
 	{
 		if(global.controlsType == 0)
@@ -3542,6 +3744,7 @@ switch(gamestate)
 			global.opSelect = 0;
 			
 			gamestate = "select";
+			global.skillSelected = -1;
 			
 			if(global.selectedActor.gridX < global.targetOp.gridX)UnitMove(global.targetOp.occupant, global.targetOp.occupant.gridX + 1, global.targetOp.occupant.gridY); else
 			if(global.selectedActor.gridX > global.targetOp.gridX)UnitMove(global.targetOp.occupant, global.targetOp.occupant.gridX - 1, global.targetOp.occupant.gridY); else
@@ -3653,6 +3856,7 @@ switch(gamestate)
 			global.opSelect = 0;
 			
 			gamestate = "select";
+			global.skillSelected = -1;
 			
 			Carry(global.selectedActor, global.targetOp.occupant);
 						
@@ -3761,6 +3965,7 @@ switch(gamestate)
 			global.opSelect = 0;
 			
 			gamestate = "select";
+			global.skillSelected = -1;
 			
 			Drop(global.selectedActor, global.targetOp.gridX, global.targetOp.gridY);
 						
@@ -3819,7 +4024,7 @@ switch(gamestate)
 		global.charlevelup = global.char1;
 		
 		global.char1.target = noone;
-		global.char1.xpgained = 30;
+		global.char1.xpgained = 40;
 		totalxp = 110;
 		
 		gamestate = "dancexpwait";
@@ -3909,6 +4114,7 @@ switch(gamestate)
 			{
 				gamestate = "pickheal2";
 			}
+			
 		}
 	}
 	break;
@@ -3927,6 +4133,9 @@ switch(gamestate)
 		if(global.phase == 0)
 		{
 			global.nTurn ++;
+			//show_message(global.nTurn mod 2 == 0)
+
+
 			
 			if(triggerScene == global.nTurn)
 			{
@@ -3942,7 +4151,7 @@ switch(gamestate)
 				captured = 0;
 			}
 		}
-
+		
 	
 	break;
 	case "checkrein":
@@ -4054,11 +4263,94 @@ switch(gamestate)
 	break;
 	case "beginturn":
 	{
-		with instance_create_layer(0, 0, "back", obj_phase)indexx = global.phase;
-		gamestate = "pickheal";
+		
+		if(global.phase == 0)
+		{
+			if(instance_exists(obj_bossModifiers))
+			{
+				with(obj_node)
+				{
+					switch(obj_bossModifiers.type)
+					{
+						case 0:
+				
+						ds_list_delete(cellEffects, ds_list_find_index(cellEffects, 0));
+						
+						if((global.nTurn mod 2 == 0))
+						{
+							if((gridX mod 2 == 0 && gridY mod 2 == 0) || (gridX mod 2 == 1 && gridY mod 2 == 1))ds_list_add(cellEffects, obj_bossModifiers.type);
+						}
+						else
+						{
+							if((gridX mod 2 == 0 && gridY mod 2 == 1) || (gridX mod 2 == 1 && gridY mod 2 == 0))ds_list_add(cellEffects, obj_bossModifiers.type);
+						}
+						
+						break;
+					}
+					
+					for(var i = 0; i < ds_list_size(cellEffects); i ++)
+					{
+						var effect = ds_list_find_value(cellEffects, i);
+						switch(effect)
+						{
+							case 0:
+								
+							if(occupant != noone && occupant.faction == 0)
+							{
+								occupant.allure = 2;
+								with occupant
+								{
+									if(allure > 0)
+									{
+										allureturns = allure;
+										allure = 0;
+										if(ofaction == -1)ofaction = faction;
+				
+										var mu = ds_list_find_index(global.faction[faction], id);
+										ds_list_delete(global.faction[faction], mu);
+				
+										if(faction == 1)
+										{
+											if(ds_list_size(global.faction[faction] == 1))
+											{
+												faction = 0;
+											} else faction = 2;
+										}
+										if(faction == 0 || faction == 2)faction = 1;
+										var spfx = instance_create_depth(x + 16, y + 16, -7000, obj_combatFX);
+										spfx.sprite_index = spr_allure;
+										spfx.image_speed = 1.5;
+				
+										ds_list_add(global.faction[faction], id);
+									}
+								}
+							}
+								
+							break;
+						}
+					}
+				}
+			}
+		}
+		
+		
+			//show_message(ds_list_size(global.faction[0]));
+		if(ds_list_size(global.faction[0]) == 0)
+		{
+			
+			state = "checkgame";
+			gamestate = "idle";
+		}
+		else
+		{
+			
+			with instance_create_layer(0, 0, "back", obj_phase)indexx = global.phase;
+			gamestate = "pickheal";
+		}
 	}
 	break;
 	case "allowcontrol":
+	
 	
 	if(global.phase == 0)
 	{
@@ -4284,7 +4576,10 @@ if(global.showOptions == 1)
 						state = "visiting";
 						gamestate = "idle";
 						if(global.selectedActor.standingNode.objectLink != noone && global.selectedActor.standingNode.objectLink.sceneID != -1)event_user(0);
-						
+						with global.selectedActor.standingNode.objectLink
+						{
+							visited = 1;
+						}
 						exit;
 					}
 					if(global.options[i] == "Open")
@@ -4298,6 +4593,7 @@ if(global.showOptions == 1)
 						{
 							with global.selectedActor.standingNode.objectLink
 							{
+								opened = 1;
 								with instance_nearest(x, y, obj_chest)
 								{
 									image_speed = 0.5;
@@ -4453,6 +4749,11 @@ if(global.showOptions == 2)
 							global.options2[global.nOptions2] = "Use";
 							global.nOptions2++;
 						}
+						if(global.ITEM[item, 3] == 0 && global.ITEM[item, 4] > 0)
+						{	
+							global.options2[global.nOptions2] = "Use";
+							global.nOptions2++;
+						}
 						if(global.ITEM[item, 3] == 3 && global.CHAR[global.selectedActor.characterID, 4] >= 10 && global.CLASS[global.CHAR[global.selectedActor.characterID, 3], 36] < 2)
 						{	
 							global.options2[global.nOptions2] = "Use";
@@ -4562,6 +4863,21 @@ if(global.showOptions == 2)
 								healAmount = global.ITEM[item, 10];
 								
 								DecreaseUses(global.opSelect, global.selectedActor)
+							}
+							if(global.ITEM[item, 3] == 0 && global.ITEM[item, 4] > 0)
+							{
+								opSize4 = 1;
+								global.showOptions = 0;
+								
+								AddBuff(global.ITEM[item, 4], global.ITEM[item, 10], 1000, global.ITEM[item, 4] + 600, 0, 0);
+								DecreaseUses(global.opSelect, global.selectedActor)
+								
+								gamestate = "select";
+						
+								EndTurn(global.selectedActor);
+								global.selectedActor = noone;
+								CleanNodes();
+								
 							}
 							if(global.ITEM[item, 3] == 3)
 							{
@@ -4749,7 +5065,7 @@ if(global.showOptions == 9)
 				{
 					if(skillinrange[global.opSelect])
 					{
-						if(global.SKILL[item, 4] == 0 || global.SKILL[item, 4] == 2)
+						if(global.SKILL[item, 4] == 0 || global.SKILL[item, 4] == 2 || global.SKILL[item, 4] == 13)
 						{
 							global.skillSelected = item;
 							global.showOptions = 4;
@@ -4921,6 +5237,24 @@ if(global.showOptions == 9)
 							
 							audio_play_sound(sfx_select, 0, 0);
 						}
+						if(global.SKILL[item, 4] == 71)
+						{
+							global.skillSelected = item;
+							global.showOptions = 4;
+							lastOp = global.opSelect;
+							global.opSelect = -1;
+							for(var i = 0; i < 5; i ++)
+							{
+								if(global.SKILL[global.skillSelected, 13] == global.ITEM[ds_list_find_value(global.CHAR[global.selectedActor.characterID, 49], i), 4] && global.opSelect == -1)
+								{
+									global.opSelect = i;
+									break;
+								}
+							}
+							gamestate = "chooseaugment";
+							opSize3 = 1;
+							audio_play_sound(sfx_select, 0, 0);
+						}
 						exit;
 					}
 					else audio_play_sound(sfx_error, 0, 0);
@@ -4951,6 +5285,7 @@ if(global.showOptions == 9)
 		}
 	}
 }
+
 if(global.showOptions == 4)
 {
 	if(global.selectedActor != noone)

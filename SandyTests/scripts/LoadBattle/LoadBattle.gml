@@ -9,11 +9,12 @@ if(file_exists(file))
 	global.currentMap = buffer_read(buf, buffer_u8);
 	global.currentRegion = buffer_read(buf, buffer_u8);
 	global.currentStage = buffer_read(buf, buffer_u8);
+	//var room = buffer_read(buf, buffer_u8);
 	
 	global.simpleFadeout = 60;
 	global.simpleFadeoutsp = 2;
 	
-	room_goto(global.MAP[global.currentMap, 3]);
+	room_goto(global.ROOM[global.MAP[global.currentMap, 3]]);
 	
 	obj_pers.alarm[9] = 1;
 

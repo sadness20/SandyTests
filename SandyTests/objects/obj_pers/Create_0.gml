@@ -60,7 +60,7 @@ InitializeParticles();
 
 
 global.debug = false;
-show_debug_overlay(1);
+//show_debug_overlay(1);
 global.window_w = 400;
 global.window_h = 240;
 display_set_gui_size(global.window_w, global.window_h);
@@ -101,6 +101,7 @@ tempVar11 = 0;
 tempVar12 = 0;
 tempVar13 = 3;
 tempVar14 = 0;
+tempVar15 = 0;
 tindex = 0;
 tcindex = 0;
 global.globalOptions = 0;
@@ -367,6 +368,13 @@ global.STAGE[val, 2] = false; //completed
 global.STAGE[val, 3] = 15; //scene ID
 global.STAGE[val, 4] = 8; //end scene ID
 
+val = 9;
+global.STAGE[val, 0] = "Endgame"; //name
+global.STAGE[val, 1] = 0; //objective
+global.STAGE[val, 2] = false; //completed
+global.STAGE[val, 3] = 18; //scene ID
+global.STAGE[val, 4] = 8; //end scene ID
+
 val = 0;
 global.MUSICPACK[val, 0] = "Vanity Judge";
 global.MUSICPACK[val, 1] = mus_vanityjudge;
@@ -408,6 +416,13 @@ global.MUSICPACK[val, 1] = mus_duty;
 global.MUSICPACK[val, 2] = mus_duty_fire;
 global.MUSICPACK[val, 3] = mus_adarkfall;
 global.MUSICPACK[val, 4] = mus_adarkfall_fire;
+
+val = 6;
+global.MUSICPACK[val, 0] = "Endgame";
+global.MUSICPACK[val, 1] = mus_endgame;
+global.MUSICPACK[val, 2] = mus_endgame_fire;
+global.MUSICPACK[val, 3] = mus_freeze;
+global.MUSICPACK[val, 4] = mus_freeze_fire;
 
 
 //OBJECTIVE INFO
@@ -881,7 +896,7 @@ global.PORT[val, 4] = 5; //angry index
 val = 3;
 global.PORT[val, 0] = spr_thunder_p;
 global.PORT[val, 1] = 130;
-global.PORT[val, 2] = 100;
+global.PORT[val, 2] = 126;
 global.PORT[val, 3] = 0; //scared index
 global.PORT[val, 4] = 0; //angry index
 
@@ -1172,6 +1187,13 @@ global.PORT[val, 2] = 84;
 global.PORT[val, 3] = 5; //scared index
 global.PORT[val, 4] = 3; //angry index
 
+val = 45;
+global.PORT[val, 0] = spr_ghost_p;
+global.PORT[val, 1] = 130;
+global.PORT[val, 2] = 126;
+global.PORT[val, 3] = 0; //scared index
+global.PORT[val, 4] = 0; //angry index
+
 val = 0;
 global.ACC[val, 0] = spr_crown1;
 
@@ -1187,6 +1209,13 @@ global.ACC[val, 0] = spr_headband1;
 val = 4;
 global.ACC[val, 0] = spr_hairpiece;
 
+val = 5;
+global.ACC[val, 0] = spr_helmet;
+
+
+val = 0;
+global.CELLEFFECT[val, 0] = "Possess"; //angry index
+global.CELLEFFECT[val, 1] = 7; //angry index
 
 
 val = 0;
@@ -1302,7 +1331,7 @@ global.glSelect8 = 0;
 global.glSelect9 = 0;
 selling = 0;
 
-global.textPosition = 0; //0 = normal, 1 = top
+global.textPosition = -1; //0 = normal, 1 = top
 global.textAlign = -1; //-1 = left, 0 = center, 1 = right
 global.textType = 0; //0 = normal, 1 = small
 global.charDial[0] = -1;
@@ -1688,7 +1717,7 @@ fillchar = "`" // used as filler character in input handling.
 filltext = string_repeat(fillchar, 10)
 filltext2 = string_repeat(fillchar, 10)
 
-buildver = "v1.86";
+buildver = "v2.00";
 sandynotes = "- Houses.";
 ds_list_add(global.debugList, "build " + buildver + "!!");
 global.debugIndex ++;

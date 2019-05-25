@@ -3,7 +3,6 @@ var index = argument[1];
 var charID = char.characterID;
 
 var inventory = global.CHAR[charID, 49];
-var uses = global.CHAR[charID, 50];
 
 var item = ds_list_find_value(inventory, index);
 							
@@ -20,7 +19,6 @@ if(item != undefined)
 	global.CHAR[charID, 56] = index; //weapon inventory link
 	with char UpdateStatsSwitch();
 	if(global.target != noone)UpdateStatsCompare(char, global.target.occupant);
-	
 }
 
 var wep = global.CHAR[charID, 44];

@@ -118,3 +118,6 @@ char.lightalpha = buffer_read(buf, buffer_u8);
 char.lightcolor = buffer_read(buf, buffer_u32);
 char.lightxpos = buffer_read(buf, buffer_s16);
 char.lightypos = buffer_read(buf, buffer_s16);
+
+char.isGhost = buffer_read(buf, buffer_bool);
+char.canGaleforce = buffer_read(buf, buffer_bool);

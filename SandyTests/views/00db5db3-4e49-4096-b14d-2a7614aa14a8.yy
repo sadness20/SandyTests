@@ -23,7 +23,8 @@
         "37c77d3d-54dc-404c-8535-866ae9393f56",
         "7367103f-10e9-4cf3-a688-bef7dada2e1e",
         "6ccfbd19-c339-4b4b-bc9f-15d7d6f76f08",
-        "c6a624ba-5eea-4e88-a796-63f879b48d9e"
+        "c6a624ba-5eea-4e88-a796-63f879b48d9e",
+        "b07ee1ab-6836-4144-97ea-8c0f55141958"
     ],
     "filterType": "GMObject",
     "folderName": "Scenary",

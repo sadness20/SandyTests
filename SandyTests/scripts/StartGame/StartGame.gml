@@ -30,7 +30,7 @@ global.CHAR[val, 57] = true; //recruited
 global.CHAR[val, 71] = 0; //voice pack
 
 val = 102;
-global.CHAR[val, 0] = "Bones"; //name
+global.CHAR[val, 0] = "Holhooja"; //name
 global.CHAR[val, 1] = 33; //portrait ID
 global.CHAR[val, 37] = 3; //hair ID
 global.CHAR[val, 38] = make_color_rgb(250, 235, 60); //hair color
@@ -265,6 +265,103 @@ for(var i = 0; i < 8; i ++)
 
 global.nChars = 2;
 
+global.CHAR[global.nChars, 0] = "Freeze"; //name
+global.CHAR[global.nChars, 1] = 3; //portrait ID
+global.CHAR[global.nChars, 2] = 1; //gender
+
+global.CHAR[global.nChars, 3] = 39; //class
+global.CHAR[global.nChars, 4] = 60; //level
+global.CHAR[global.nChars, 5] = 0; //exp
+
+global.CHAR[global.nChars, 6] = 400; //hp
+global.CHAR[global.nChars, 7] = 40; //str
+global.CHAR[global.nChars, 8] = 40; //mag
+global.CHAR[global.nChars, 9] = 40; //skill
+global.CHAR[global.nChars, 10] = 40; //spd
+global.CHAR[global.nChars, 11] = 40; //lck
+global.CHAR[global.nChars, 12] = 125; //def
+global.CHAR[global.nChars, 13] = 125; //res
+
+global.CHAR[global.nChars, 14] = 100; //hpgrowth
+global.CHAR[global.nChars, 15] = 80; //strgrowth
+global.CHAR[global.nChars, 16] = 80; //maggrowth
+global.CHAR[global.nChars, 17] = 80; //skillgrowth
+global.CHAR[global.nChars, 18] = 80; //spdgrowth
+global.CHAR[global.nChars, 19] = 60; //lckgrowth
+global.CHAR[global.nChars, 20] = 60; //defgrowth
+global.CHAR[global.nChars, 21] = 60; //resgrowth
+
+global.CHAR[global.nChars, 22] = 5; //swordrank
+global.CHAR[global.nChars, 23] = 5; //lancerank
+global.CHAR[global.nChars, 24] = 5; //axerank
+global.CHAR[global.nChars, 25] = 5; //daggerrank
+global.CHAR[global.nChars, 26] = 5; //bowrank
+global.CHAR[global.nChars, 27] = 5; //darktome 
+global.CHAR[global.nChars, 28] = 5; //lighttome
+global.CHAR[global.nChars, 29] = 5; //animaatome
+global.CHAR[global.nChars, 30] = 5; //staffrank
+global.CHAR[global.nChars, 31] = 5; //stonerank
+global.CHAR[global.nChars, 32] = 5; //MP
+global.CHAR[global.nChars, 33] = ds_list_create(); //skills
+global.CHAR[global.nChars, 34] = ds_list_create(); //activeskills
+
+global.CHAR[global.nChars, 35] = 0; //face type
+global.CHAR[global.nChars, 36] = 0; //eyes type
+global.CHAR[global.nChars, 37] = 11; //hair ID
+global.CHAR[global.nChars, 38] = make_color_rgb(255, 235, 215); //hair color
+global.CHAR[global.nChars, 39] = make_color_rgb(94, 120, 161); //eye color
+
+global.CHAR[global.nChars, 40] = 0; //support rank biarray id
+global.CHAR[global.nChars, 41] = 0; //children biarray list
+
+global.CHAR[global.nChars, 42] = 0; //voice id
+global.CHAR[global.nChars, 43] = 5; //Accessory ID
+global.CHAR[global.nChars, 44] = -1; //weaponequip
+
+global.CHAR[global.nChars, 45] = 0; //atk
+global.CHAR[global.nChars, 46] = 0; //hit
+global.CHAR[global.nChars, 47] = 0; //crit
+global.CHAR[global.nChars, 48] = 0; //avo
+
+global.CHAR[global.nChars, 49] = ds_list_create(); //inventory
+global.CHAR[global.nChars, 50] = ds_list_create(); //uses
+
+global.CHAR[global.nChars, 51] = false; //dead
+global.CHAR[global.nChars, 52] = false; //marked for deletion
+global.CHAR[global.nChars, 53] = 0; //expression
+
+global.CHAR[global.nChars, 54] = -1; //voice1
+global.CHAR[global.nChars, 55] = -1; //last expression
+global.CHAR[global.nChars, 56] = -1; //weapon inventory link
+
+global.CHAR[global.nChars, 57] = false; //recruited
+global.CHAR[global.nChars, 58] = false; //active
+global.CHAR[global.nChars, 59] = false; //activeforfight
+
+global.CHAR[global.nChars, 60] = 0; //swordrankxp
+global.CHAR[global.nChars, 61] = 0; //lancerankxp
+global.CHAR[global.nChars, 62] = 0; //axerankxp
+global.CHAR[global.nChars, 63] = 0; //daggerrankxp
+global.CHAR[global.nChars, 64] = 0; //bowrankxp
+global.CHAR[global.nChars, 65] = 0; //darktomexp
+global.CHAR[global.nChars, 66] = 0; //lighttomexp
+global.CHAR[global.nChars, 67] = 0; //animaatomexp
+global.CHAR[global.nChars, 68] = 0; //staffrankxp
+global.CHAR[global.nChars, 69] = 0; //stonerankxp
+
+global.CHAR[global.nChars, 70] = global.CHAR[global.nChars, 9] + floor(global.CHAR[global.nChars, 11] / 2); //SP
+global.CHAR[global.nChars, 71] = -1; //voice pack
+global.CHAR[global.nChars, 72] = global.nChars; //death quote
+global.CHAR[global.nChars, 73] = 0; //deploy order
+global.CHAR[global.nChars, 74] = -1; //personal skill
+
+for(var i = 0; i < 8; i ++)
+{
+	global.CHAR[global.nChars, 14 + i] += global.CLASS[global.CHAR[global.nChars, 3], 24 + i];
+}
+
+global.nChars = 3;
+
 
 
 //////////////////////
@@ -289,12 +386,13 @@ global.SUPPORTXP[0, 1] = 0;
 */
 
 //add skills
-AddSkill(1, 22);
 AddSkill(1, 25);
 
-AddSkill(0, 33);
 AddSkill(0, 34);
-AddSkill(0, 36);
+
+AddSkill(2, 39);
+AddSkill(2, 40);
+AddSkill(2, 41);
 /*
 AddSkill(4, 23);
 AddSkill(6, 4);
@@ -311,6 +409,10 @@ AddItem(1, 34);
 AddItem(1, 16);
 AddItem(1, 12);
 
+AddItem(2, 105);
+AddItem(2, 106);
+AddItem(2, 107);
+
 /*
 AddItem(4, 19);
 AddItem(6, 17);
@@ -324,6 +426,7 @@ AddItem(9, 12);
 
 EquipFirstWeaponGlobal(0);
 EquipFirstWeaponGlobal(1);
+EquipFirstWeaponGlobal(2);
 
 /*
 EquipFirstWeaponGlobal(4);
@@ -370,6 +473,7 @@ ds_priority_add(itemList, 34, global.ITEM[34, 4] * 100 + global.ITEM[34, 5] / 10
 ds_priority_add(itemList, 83, global.ITEM[83, 4] * 100 + global.ITEM[83, 5] / 100);
 ds_priority_add(itemList, 88, global.ITEM[88, 4] * 100 + global.ITEM[88, 5] / 100);
 ds_priority_add(itemList, 33, global.ITEM[33, 4] * 100 + global.ITEM[33, 5] / 100);
+ds_priority_add(itemList, 110, global.ITEM[110, 4] * 100 + global.ITEM[110, 5] / 100);
 for(var i = 16; i < 20; i ++)
 {
 	var item = i;

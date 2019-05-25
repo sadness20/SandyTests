@@ -52,7 +52,7 @@ while(ds_priority_size(open) > 0)
 		var check = 1;
 		if(neighbor.occupant != noone && char.hasSkill[0] == 0 && neighbor.occupant != ignore && (neighbor.occupant.faction == targetFaction1 || neighbor.occupant.faction == targetFaction2))check = 0;
 		if(abs(neighbor.level - current.level) > 1)check = 0;
-		if(check && ds_list_find_index(closed, neighbor) < 0 && nCost + current.G2 <= mp)
+		if(neighbor.passable && check && ds_list_find_index(closed, neighbor) < 0 && nCost + current.G2 <= mp)
 		{
 			if(ds_priority_find_priority(open, neighbor) == 0 || ds_priority_find_priority(open, neighbor) == undefined)
 			{
@@ -65,7 +65,7 @@ while(ds_priority_size(open) > 0)
 				var mir = char.minRangeDamage;
 				var mar = char.maxRangeDamage;
 				
-
+				/*
 				if(mir == 1 && mar == 1)
 				{
 					for(var a = 0; a < ds_list_size(neighbor.neighbors); a ++)
@@ -77,7 +77,8 @@ while(ds_priority_size(open) > 0)
 						}
 					}
 				}
-				//if(mir == 1 && mar == 1)checkRange1(neighbor.gridX, neighbor.gridY, 0);
+				*/
+				if(mir == 1 && mar == 1)checkRange1(neighbor.gridX, neighbor.gridY, 0);
 				if(mir == 1 && mar == 2)checkRange1_2(neighbor.gridX, neighbor.gridY, 0);
 				if(mir == 2 && mar == 2)checkRange2(neighbor.gridX, neighbor.gridY, 0);
 				if(mir == 2 && mar == 3)checkRange2_3(neighbor.gridX, neighbor.gridY, 0);

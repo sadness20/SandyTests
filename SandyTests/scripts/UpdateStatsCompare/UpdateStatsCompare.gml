@@ -1,16 +1,38 @@
 var char1 = argument[0];
 var char2 = argument[1];
 
+var cell = char1.standingNode;
+if(obj_game.gamestate == "select target dir")cell = global.cellAttack;
+
 if(char2.faction > 0 && char2 != global.selectedActor && char2.weaponType >= 2)
 {
 	char2.lastWeapon = -1;
 	for(var i = 0; i < ds_list_size(global.CHAR[char2.characterID, 49]); i ++)
 	{
 		var wep = ds_list_find_value(global.CHAR[char2.characterID, 49], i);
-		if(global.ITEM[wep, 14] < 2 && CanUse(char2.characterID, wep) && CheckRange_weapon(char2, char1, wep, 1))
+		if(global.ITEM[wep, 14] < 2 && CanUse(char2.characterID, wep) && CheckRange_weapon(char2, cell, wep))
 		{
 			char2.equipAfter = global.CHAR[char2.characterID, 56];
 			Equip(char2, i);
+			break;
+		}
+	}
+}
+if(char2.faction > 0 && char2 != global.selectedActor && char2.weaponType < 2 && !CheckRange_weapon(char2, cell, global.CHAR[char2.characterID, 44]))
+{
+	char2.lastWeapon = -1;
+	var lastwepscore = 0;
+	for(var i = 0; i < ds_list_size(global.CHAR[char2.characterID, 49]); i ++)
+	{
+		var wep = ds_list_find_value(global.CHAR[char2.characterID, 49], i);
+		var wepscore = global.ITEM[wep, 10];
+		if(!CheckRange_weapon(char2, cell, wep))wepscore = -1;
+		if(wepscore > lastwepscore && global.ITEM[wep, 14] < 2 && CanUse(char2.characterID, wep))
+		{
+			lastwepscore = wepscore;
+			char2.equipAfter = global.CHAR[char2.characterID, 56];
+			Equip(char2, i);
+			//show_message("XD");
 			break;
 		}
 	}
@@ -22,8 +44,6 @@ UpdateStats(char2, -1);
 var wep1 = global.CHAR[char1.characterID, 44];
 var wep2 = global.CHAR[char2.characterID, 44];
 
-var cell = char1.standingNode;
-if(obj_game.gamestate == "select target dir")cell = global.cellAttack;
 global.cellDistance = FindDistance(cell.gridX, cell.gridY, char2.standingNode.gridX, char2.standingNode.gridY);
 
 var adv = 0;
@@ -242,7 +262,7 @@ if(wep2 != -1)
 	}
 }
 
-var cs1 = -1, cs2 = -1;
+var cs1 = -1;
 if(global.skillSelected != -1)cs1 = global.skillSelected;
 //if(char2.combatSkill != -1)cs2 = char2.combatSkill;
 

@@ -111,7 +111,7 @@ repeat(nskills)
 				hasSkill = 1;
 			}
 		}
-		if(hasSkill == 0 && i != 10 && i != 17 && i != 22 && global.CHAR[charid, 70] >= global.SKILL[i, 3])ds_list_add(availableSkills, i);
+		if(hasSkill == 0 && i != 10 && i != 17 && global.CHAR[charid, 70] >= global.SKILL[i, 3])ds_list_add(availableSkills, i);
 	}
 	
 	for(var i = 33; i < 37; i ++)
@@ -124,7 +124,20 @@ repeat(nskills)
 				hasSkill = 1;
 			}
 		}
-		if(hasSkill == 0 && i != 35 && global.CHAR[charid, 70] >= global.SKILL[i, 3])ds_list_add(availableSkills, i);
+		if(hasSkill == 0 && i != 35 && i != 34 && global.CHAR[charid, 70] >= global.SKILL[i, 3])ds_list_add(availableSkills, i);
+	}
+	
+	for(var i = 42; i < 43; i ++)
+	{
+		var hasSkill = 0;
+		for(var ii = 0; ii < ds_list_size(global.CHAR[charid, 33]); ii ++)
+		{
+			if(ds_list_find_value(global.CHAR[charid, 33], ii) == i)
+			{
+				hasSkill = 1;
+			}
+		}
+		if(hasSkill == 0 && global.CHAR[charid, 70] >= global.SKILL[i, 3])ds_list_add(availableSkills, i);
 	}
 					
 	ds_list_shuffle(availableSkills);

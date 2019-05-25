@@ -29,7 +29,8 @@
         "9c53bde9-bee4-4ea9-b2d5-054f76065e1d",
         "bbdd9351-303d-4719-ba44-c7995e0bafbb",
         "e15648da-1150-46ce-bf39-f8e91a4a98ee",
-        "6e3c0c21-432c-4336-b3c1-51dd1b2da379"
+        "6e3c0c21-432c-4336-b3c1-51dd1b2da379",
+        "b3cb39c7-f48d-4959-a561-7983d87cd824"
     ],
     "filterType": "GMScript",
     "folderName": "Misc2",

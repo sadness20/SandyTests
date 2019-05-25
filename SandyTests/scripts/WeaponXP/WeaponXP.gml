@@ -39,19 +39,19 @@ while(xp > 0)
 		break;
 	
 		case 1:
-		xptolvl = 20;
+		xptolvl = 15;
 		break;
 
 		case 2:
-		xptolvl = 35;
+		xptolvl = 25;
 		break;
 
 		case 3:
-		xptolvl = 50;
+		xptolvl = 35;
 		break;
 
 		case 4:
-		xptolvl = 70;
+		xptolvl = 50;
 		break;
 
 		case 5:

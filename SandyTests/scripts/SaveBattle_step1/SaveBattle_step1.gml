@@ -23,14 +23,48 @@ for(var i = 0; i < ds_list_size(global.faction[2]); i ++)
 	with char SaveCharInfo(buf, char);
 }
 
+buffer_write(buf, buffer_u8, instance_number(obj_spawnTurn));
+with(obj_spawnTurn)
+{
+	buffer_write(buf, buffer_u8, characterID);
+	buffer_write(buf, buffer_u8, gridX);
+	buffer_write(buf, buffer_u8, gridY);
+}
+
+buffer_write(buf, buffer_u8, instance_number(obj_chestMarker));
+with(obj_chestMarker)
+{
+	buffer_write(buf, buffer_u8, gridX);
+	buffer_write(buf, buffer_u8, gridY);
+	
+	buffer_write(buf, buffer_s16, sceneID);
+	buffer_write(buf, buffer_u8, opened);
+	
+	for(var i = 0; i < 5; i ++)
+	{
+		buffer_write(buf, buffer_s16, itemReward[i]);
+	}
+}
+buffer_write(buf, buffer_u8, instance_number(obj_houseMarker));
+with(obj_houseMarker)
+{
+	buffer_write(buf, buffer_u8, gridX);
+	buffer_write(buf, buffer_u8, gridY);
+	
+	buffer_write(buf, buffer_s16, sceneID);
+	buffer_write(buf, buffer_u8, visited);
+	
+	for(var i = 0; i < 5; i ++)
+	{
+		buffer_write(buf, buffer_s16, itemReward[i]);
+	}
+}
+
 buffer_write(buf, buffer_u8, global.nSpawns);
-buffer_write(buf, buffer_u8, global.oldZoom);
 buffer_write(buf, buffer_u8, global.nTurn);
 buffer_write(buf, buffer_u8, global.activeCharacters);
 buffer_write(buf, buffer_u8, global.currentTurn);
 
-buffer_write(buf, buffer_u8, global.zoom);
-//buffer_write(buf, buffer_u8, global.targetZoom);
 
 //buffer_write(buf, buffer_bool, global.rangeToggle);
 //buffer_write(buf, buffer_bool, global.enemyUpdated);

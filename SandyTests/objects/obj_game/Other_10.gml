@@ -27,8 +27,18 @@ with(obj_pers)
 		case 1002:
 			ResetDialogue();
 	
-			SetLeftCharacter(1);
-			Dialogue(1, "Wow a compass!");
+			SetLeftCharacter(global.selectedActor.characterID);
+			Dialogue(global.selectedActor.characterID, choose("Hmm what did I find?","What's in here?","Found something!","I wonder what's inside."));
+						
+			DialogueStart(1, -1, 0);
+			
+			break;
+			
+		case 1003:
+			ResetDialogue();
+	
+			SetLeftCharacter(102);
+			Dialogue(102, choose("Thanks for helping us! Here, we have this for you."));
 						
 			DialogueStart(1, -1, 0);
 			

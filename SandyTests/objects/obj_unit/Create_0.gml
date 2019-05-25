@@ -2,7 +2,8 @@
 // You can write your code in this editor
 
 depth = -y + 24;
-//////test
+characterID = 0;
+
 lightpower=100;
 lightalpha=25;
 lightcolor=c_white;
@@ -39,6 +40,8 @@ captured = 0;
 canDance = 1;
 isCarrying = noone;
 oldFaction = -1;
+isGhost = 0;
+canGaleforce = 1;
 
 for(var i = 0; i < 10; i ++)
 {

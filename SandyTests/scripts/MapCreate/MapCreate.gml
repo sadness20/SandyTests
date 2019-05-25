@@ -1,3 +1,9 @@
+with(obj_chestMarker)
+{
+	instance_create_depth(x, y - global.gridSize, 0, obj_solidMarker);
+	instance_create_depth(x + 16, y - 14, 0, obj_chest);
+}
+
 with (obj_node)
 {
 	tempObject = instance_position(x + global.gridSize / 2, y + global.gridSize / 2, obj_terrain);
@@ -30,6 +36,19 @@ with (obj_node)
 	{
 		level = tempObject.level;
 	}
+	/*
+	if(instance_exists(obj_bossModifiers))
+	{
+		switch(obj_bossModifiers.type)
+		{
+			case 0:
+			
+			
+			
+			break;
+		}
+	}
+	*/
 }
 		
 //with (obj_terrain) instance_destroy();
